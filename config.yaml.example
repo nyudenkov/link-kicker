@@ -10,3 +10,4 @@ executor:
 commands:
     start: Запустить бота
     random: Получить рандомную ссылку
+    statistics: Статистика

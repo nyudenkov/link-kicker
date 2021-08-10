@@ -1,6 +1,7 @@
 from aiogram import Dispatcher
 
 from app.bot.handlers import link
+from app.bot.handlers import statistics
 from app.bot.handlers.start import send_welcome
 
 
@@ -18,3 +19,5 @@ def setup(dp: Dispatcher):
     dp.register_callback_query_handler(
         link.read_link_handler, lambda c: c.data and c.data.startswith("read")
     )
+
+    dp.register_message_handler(statistics.statistics_handler, commands="statistics")
