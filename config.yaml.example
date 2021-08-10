@@ -1,0 +1,12 @@
+bot:
+    token: BOT_TOKEN
+    parse_mode: html
+
+# Whether to skip previous updates or not
+executor:
+    skip_updates: true
+
+# Visible commands and their description.
+commands:
+    start: Запустить бота
+    random: Получить рандомную ссылку
