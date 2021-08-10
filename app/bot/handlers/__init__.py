@@ -21,3 +21,4 @@ def setup(dp: Dispatcher):
     )
 
     dp.register_message_handler(statistics.statistics_handler, commands="statistics")
+    dp.register_message_handler(statistics.bot_statistics_handler, commands="botstatistics")

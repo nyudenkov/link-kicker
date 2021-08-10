@@ -12,3 +12,10 @@ async def statistics_handler(message: types.Message):
     was_read_count: int = await Link.filter(owner=user, was_read=True).count()
 
     await message.reply(Message.F_STATISTICS.format(all_count, was_read_count))
+
+
+async def bot_statistics_handler(message: types.Message):
+    all_count: int = await Link.all().count()
+    was_read_count: int = await Link.filter(was_read=True).count()
+
+    await message.reply(Message.F_BOT_STATISTICS.format(all_count, was_read_count))
