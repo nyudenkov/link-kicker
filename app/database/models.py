@@ -4,12 +4,13 @@ from random import choice
 from aiogram import types
 from tortoise import fields
 
-from app.database.mixins import ModelMixin
+from app import enums
+from app.database import mixins
 
-__all__ = ["User", "Link"]
+__all__ = ["User", "Link", "StatisticsRecord"]
 
 
-class User(ModelMixin):
+class User(mixins.ModelMixin):
     id = fields.IntField(pk=True)
     tg_id = fields.IntField(unique=True)
 
@@ -20,7 +21,7 @@ class User(ModelMixin):
         return await cls.get_or_create(tg_id=message.from_user.id)
 
 
-class Link(ModelMixin):
+class Link(mixins.ModelMixin):
     id = fields.IntField(pk=True)
     url = fields.CharField(max_length=1024)
     was_read = fields.BooleanField(default=False)
@@ -37,3 +38,7 @@ class Link(ModelMixin):
         if link_ids:
             return await Link.get(id=choice(link_ids))
         return None
+
+
+class StatisticsRecord(mixins.CreatedMixin):
+    intent = fields.CharEnumField(enums.Intent)
