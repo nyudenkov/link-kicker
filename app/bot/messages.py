@@ -20,5 +20,5 @@ async def get_random_link_message(
         return Message.F_URL.format(link.url), markup
     else:
         if mailing:
-            return Message.NOTHING_TO_SEND_MAILING
-        return Message.NOTHING_TO_SEND
+            return Message.NOTHING_TO_SEND_MAILING, None
+        return Message.NOTHING_TO_SEND, None
