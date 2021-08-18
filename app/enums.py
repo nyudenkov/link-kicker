@@ -7,3 +7,4 @@ class Intent(str, Enum):
     DELETE = "delete"
     READ = "read"
     STATISTICS = "statistics"
+    FEEDBACK = "feedback"
