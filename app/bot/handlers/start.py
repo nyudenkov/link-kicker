@@ -1,5 +1,7 @@
 from aiogram import types
 
+from app.bot.forms import HourForm
+from app.bot.forms import hour_form_callback
 from app.database.models import User
 
 # welcome_text = """👋 Велком!\n
@@ -16,7 +18,6 @@ welcome_text = """👋 Велком!
 * Ждешь время рассылки (18:00 МСК, скоро можно будет настроить)
 * Читаешь свою статью и помечаешь ее прочитанной у бота (под ссылкой будет кнопочка)
 * Радуешься своей продуктивности! (как пример)
-Начнём? Отправляй любую ссылку в диалог 👇🏻
 """
 
 
@@ -24,3 +25,4 @@ async def send_welcome(message: types.Message):
     await User.get_from_message(message)
     # await message.reply("👋 Велком!\nПросто присылай мне ссылки и я буду каждый день отправлять тебе по паре штук.")
     await message.reply(welcome_text)
+    await HourForm.start(hour_form_callback)

@@ -1,3 +1,6 @@
+from datetime import datetime
+
+import pytz
 from aiogram.utils import exceptions as aiogram_exceptions
 from loguru import logger
 
@@ -8,7 +11,7 @@ from app.misc.sentry import capture_exception
 
 
 async def link_mailing():
-    for user in await User.all():
+    for user in await User.filter(hour=datetime.now(pytz.timezone("Europe/Moscow")).hour):
         message_text, markup = await get_random_link_message(user, mailing=True)
         try:
             await bot.send_message(user.tg_id, message_text, reply_markup=markup)

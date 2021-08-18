@@ -35,6 +35,17 @@ fast = ["uvloop (>=0.14.0,<0.15.0)", "ujson (>=1.35)"]
 proxy = ["aiohttp-socks (>=0.5.3,<0.6.0)"]
 
 [[package]]
+name = "aiogram-forms"
+version = "0.2.0"
+description = "Forms for aiogram"
+category = "main"
+optional = false
+python-versions = ">=3.7,<4.0"
+
+[package.dependencies]
+aiogram = ">=2.13,<3.0"
+
+[[package]]
 name = "aiohttp"
 version = "3.7.4.post0"
 description = "Async http client/server framework (asyncio)"
@@ -734,7 +745,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "a8ecfbfba9b0a59a29a860edcbeeb31a7005c89f86ec6f144ef2566eb88854ee"
+content-hash = "f7d855523520a044b0bc326b0042111af6c6259fd45c1dccfbda57e97e493ecb"
 
 [metadata.files]
 aerich = [
@@ -744,6 +755,10 @@ aerich = [
 aiogram = [
     {file = "aiogram-2.14.3-py3-none-any.whl", hash = "sha256:2f3259fcf7598a166aace022768a77be8ab732971f54e08a3b828a896cfe2bad"},
     {file = "aiogram-2.14.3.tar.gz", hash = "sha256:8ce2886c6c74a35f7a75fb6422af53914aa9c1b7d7032de8d58a3f411349700d"},
+]
+aiogram-forms = [
+    {file = "aiogram-forms-0.2.0.tar.gz", hash = "sha256:a5fd7e47bce7e4db78015247cc5da2d3aa6691073869ffee27b59df88b82a3c6"},
+    {file = "aiogram_forms-0.2.0-py3-none-any.whl", hash = "sha256:ac6abd9b058ab51ad272b2a911b1973b7c79d51785768c1fa6c3c1e5ba583e3a"},
 ]
 aiohttp = [
     {file = "aiohttp-3.7.4.post0-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:3cf75f7cdc2397ed4442594b935a11ed5569961333d49b7539ea741be2cc79d5"},

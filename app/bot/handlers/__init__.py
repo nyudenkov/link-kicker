@@ -1,8 +1,10 @@
 from aiogram import Dispatcher
 
-from app.bot.handlers import link
-from app.bot.handlers import statistics
 from app.bot.handlers import feedback
+from app.bot.handlers import hour
+from app.bot.handlers import link
+from app.bot.handlers import mailing
+from app.bot.handlers import statistics
 from app.bot.handlers.start import send_welcome
 
 
@@ -22,6 +24,10 @@ def setup(dp: Dispatcher):
     )
 
     dp.register_message_handler(feedback.feedback_handler, commands="feedback")
+
+    dp.register_message_handler(hour.hour_handler, commands="hour")
+
+    dp.register_message_handler(mailing.mailing_handler, commands="admin_mailing")
 
     dp.register_message_handler(statistics.statistics_handler, commands="statistics")
     dp.register_message_handler(statistics.bot_statistics_handler, commands="botstatistics")

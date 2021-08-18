@@ -8,3 +8,4 @@ class Intent(str, Enum):
     READ = "read"
     STATISTICS = "statistics"
     FEEDBACK = "feedback"
+    HOUR = "hour"

@@ -13,6 +13,7 @@ __all__ = ["User", "Link", "StatisticsRecord"]
 class User(mixins.ModelMixin):
     id = fields.IntField(pk=True)
     tg_id = fields.IntField(unique=True)
+    hour = fields.SmallIntField(null=True)
 
     links: fields.ReverseRelation["Link"]
 
