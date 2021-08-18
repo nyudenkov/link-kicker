@@ -14,6 +14,5 @@ async def link_mailing():
             await bot.send_message(user.tg_id, message_text, reply_markup=markup)
         except aiogram_exceptions.BotBlocked:
             logger.info(f"{user.tg_id} blocked bot")
-            await user.delete()
         except Exception as ex:  # noqa
             capture_exception(ex)
