@@ -2,6 +2,10 @@ bot:
     token: BOT_TOKEN
     parse_mode: html
 
+# Sentry SDK for logging errors
+sentry_sdk:
+    url:
+
 # Whether to skip previous updates or not
 executor:
     skip_updates: true

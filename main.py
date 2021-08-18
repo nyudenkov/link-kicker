@@ -8,6 +8,7 @@ from app import config
 from app.bot import bot
 from app.bot import handlers
 from app.misc import set_commands
+from app.misc.sentry import init_sentry
 from app.tasks import scheduler
 
 # Storage and dispatcher instances
@@ -31,6 +32,8 @@ async def startup(dispatcher: Dispatcher):
 
     logger.info("Start scheduler")
     scheduler.start()
+
+    init_sentry()
 
     logger.info("Start polling")
 
