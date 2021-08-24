@@ -12,6 +12,9 @@ from app.misc.sentry import capture_exception
 
 async def send_mailing_message(user):
     message_text, markup = await get_random_link_message(user, mailing=True)
+    if not message_text:
+        return
+
     try:
         await bot.send_message(user.tg_id, message_text, reply_markup=markup)
     except aiogram_exceptions.BotBlocked:

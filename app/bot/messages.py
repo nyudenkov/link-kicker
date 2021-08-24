@@ -9,7 +9,7 @@ from app.database.models import User
 
 async def get_random_link_message(
     user: User, mailing: bool = False
-) -> t.Tuple[str, t.Optional[types.InlineKeyboardMarkup]]:
+) -> t.Tuple[t.Optional[str], t.Optional[types.InlineKeyboardMarkup]]:
     if link := await Link.get_random_by_owner(user):
         markup = types.InlineKeyboardMarkup()
         markup.insert(
@@ -20,5 +20,5 @@ async def get_random_link_message(
         return Message.F_URL.format(link.url), markup
     else:
         if mailing:
-            return Message.NOTHING_TO_SEND_MAILING, None
+            return None, None
         return Message.NOTHING_TO_SEND, None

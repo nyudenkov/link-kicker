@@ -8,7 +8,7 @@ from app.database.models import User
 
 class HourForm(forms.Form):
     hour = IntRangeField(
-        label="Напиши час во сколько тебе присылать ссылку по Московскому времени (от 1 до 24)",
+        label="Напиши час во сколько тебе будет удобно получать ссылочку (по Московскому времени, надо написать цифру от 1 до 24)",
         start=1,
         end=24,
         validation_error_message="Тебе нужно написать цифру от 1 до 24"
