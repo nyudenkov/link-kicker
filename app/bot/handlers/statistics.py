@@ -1,6 +1,8 @@
 from aiogram import types
 
+from app import config
 from app import enums
+from app.bot.utils.errors import catch_error
 from app.bot.utils.statistics import catch_intent
 from app.constants import Message
 from app.database.models import Link
@@ -8,6 +10,7 @@ from app.database.models import User
 
 
 @catch_intent(intent=enums.Intent.STATISTICS)
+@catch_error
 async def statistics_handler(message: types.Message):
     user, created = await User.get_from_message(message)
 
@@ -18,6 +21,10 @@ async def statistics_handler(message: types.Message):
 
 
 async def bot_statistics_handler(message: types.Message):
+    user, created = await User.get_from_message(message)
+    if user.tg_id != config.ADMIN_CHAT_ID:
+        await message.reply("No access")
+        return
     all_count: int = await Link.all().count()
     was_read_count: int = await Link.filter(was_read=True).count()
 

@@ -30,3 +30,10 @@ async def link_mailing():
     if now_hour == 18:
         for user in await User.filter(hour__isnull=True):
             await send_mailing_message(user)
+
+
+async def delete_message(chat_id: int, message_id: int):
+    try:
+        await bot.delete_message(chat_id, message_id)
+    except Exception as ex:
+        logger.error(ex)

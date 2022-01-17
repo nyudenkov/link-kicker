@@ -5,10 +5,10 @@ from app import config
 
 
 def init_sentry() -> None:
-    if config["sentry_sdk"]["url"]:
+    if config.SENTRY_URL:
         logger.info("Initializing Sentry")
         sentry_sdk.init(
-            config["sentry_sdk"]["url"], traces_sample_rate=1.0
+            config.SENTRY_URL, traces_sample_rate=1.0
         )
 
 

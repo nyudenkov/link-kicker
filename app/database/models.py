@@ -37,8 +37,12 @@ class Link(mixins.ModelMixin):
             owner=owner, was_read=False
         ).values_list("id", flat=True)
         if link_ids:
-            return await Link.get(id=choice(link_ids))
+            return await cls.get(id=choice(link_ids))
         return None
+
+    @classmethod
+    async def get_unread_links_by_owner(cls, owner: User) -> t.Optional[t.List["Link"]]:
+        return await cls.filter(owner=owner)
 
 
 class StatisticsRecord(mixins.CreatedMixin):

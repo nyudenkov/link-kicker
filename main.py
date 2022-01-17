@@ -4,6 +4,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from loguru import logger
 from tortoise import Tortoise
 
+from app import commands
 from app import config
 from app.bot import bot
 from app.bot import handlers
@@ -28,7 +29,7 @@ async def startup(dispatcher: Dispatcher):
     await Tortoise.generate_schemas()
 
     # Set command hints
-    await set_commands(dispatcher, config.get("commands"))
+    await set_commands(dispatcher, commands)
 
     logger.info("Start scheduler")
     scheduler.start()
@@ -45,5 +46,5 @@ async def shutdown(dispatcher: Dispatcher):
 if __name__ == "__main__":
     # Start long-polling mode
     executor.start_polling(
-        dp, on_startup=startup, on_shutdown=shutdown, **config.get("executor")
+        dp, on_startup=startup, on_shutdown=shutdown, skip_updates=config.EXECUTOR_SKIP_UPDATES
     )
