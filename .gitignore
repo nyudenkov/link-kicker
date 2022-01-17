@@ -130,5 +130,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-config.yaml
+commands.yaml
 .idea
