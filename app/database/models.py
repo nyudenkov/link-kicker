@@ -3,6 +3,7 @@ from random import choice
 
 from aiogram import types
 from tortoise import fields
+from tortoise.queryset import QuerySet
 
 from app import enums
 from app.database import mixins
@@ -40,9 +41,12 @@ class Link(mixins.ModelMixin):
             return await cls.get(id=choice(link_ids))
         return None
 
+    # @classmethod
+    # async def get_unread_links_by_owner(cls, owner: User) -> t.Optional[t.List["Link"]]:
+    #     return await cls.filter(owner=owner, was_read=False)
     @classmethod
-    async def get_unread_links_by_owner(cls, owner: User) -> t.Optional[t.List["Link"]]:
-        return await cls.filter(owner=owner, was_read=False)
+    async def get_unread_links_by_owner(cls, owner: User) -> "QuerySet":
+        return cls.filter(owner=owner, was_read=False)
 
 
 class StatisticsRecord(mixins.CreatedMixin):

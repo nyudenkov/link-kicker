@@ -27,3 +27,6 @@ def setup(dp: Dispatcher):
     dp.register_message_handler(link.links_handler, commands="links")
     dp.register_callback_query_handler(link.del_link_handler, lambda c: c.data and c.data.startswith("del"))
     dp.register_callback_query_handler(link.read_link_handler, lambda c: c.data and c.data.startswith("read"))
+    dp.register_callback_query_handler(
+        link.links_page_handler, lambda c: c.data and c.data.startswith("links_paginator")
+    )
