@@ -8,7 +8,7 @@ from app.database.models import User
 
 
 async def get_random_link_message(
-    user: User, mailing: bool = False
+        user: User, mailing: bool = False
 ) -> t.Tuple[t.Optional[str], t.Optional[types.InlineKeyboardMarkup]]:
     if link := await Link.get_random_by_owner(user):
         markup = types.InlineKeyboardMarkup()

@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 BOT_TOKEN = environ.get("BOT_TOKEN")
 ADMIN_CHAT_ID = int(environ.get("ADMIN_CHAT_ID"))
 

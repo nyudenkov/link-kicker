@@ -103,7 +103,6 @@ async def del_link_from_links_handler(callback_query: types.CallbackQuery):
     await callback_query.answer("Ссылка удалена", show_alert=True)
 
 
-
 @utils.catch_intent(intent=enums.Intent.READ)
 @utils.catch_error
 async def read_link_handler(callback_query: types.CallbackQuery):
