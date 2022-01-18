@@ -29,16 +29,10 @@ class QuerySetPaginationKeyboard(InlineKeyboardMarkup):
         return ceil(await self.qs.count() / self.count)
 
     async def get_keyboard(self) -> t.Tuple["QuerySetPaginationKeyboard", t.List]:
-        self.data = await self.qs.offset(
-            0 if self.page == 1 else (self.count * (self.page - 1))
-        ).limit(self.count)
+        self.data = await self.qs.offset(0 if self.page == 1 else (self.count * (self.page - 1))).limit(self.count)
         if self.page != 1:
-            self.insert(
-                types.InlineKeyboardButton("◀️", callback_data=f"{self.handler_name}_{self.page - 1}")
-            )
+            self.insert(types.InlineKeyboardButton("◀️", callback_data=f"{self.handler_name}_{self.page - 1}"))
         if self.page != await self.max_page:
-            self.insert(
-                types.InlineKeyboardButton("▶️", callback_data=f"{self.handler_name}_{self.page + 1}")
-            )
+            self.insert(types.InlineKeyboardButton("▶️", callback_data=f"{self.handler_name}_{self.page + 1}"))
         self.row()
         return self, self.data

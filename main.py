@@ -8,6 +8,7 @@ from app import commands
 from app import config
 from app.bot import bot
 from app.bot import handlers
+from app.database import TORTOISE_ORM
 from app.misc import set_commands
 from app.misc.sentry import init_sentry
 from app.tasks import scheduler
@@ -23,9 +24,7 @@ async def startup(dispatcher: Dispatcher):
     handlers.setup(dispatcher)
 
     logger.info("Configuring Database")
-    await Tortoise.init(
-        db_url=f"sqlite://db.sqlite3", modules={"models": ["app.database.models"]}
-    )
+    await Tortoise.init(TORTOISE_ORM)
     await Tortoise.generate_schemas()
 
     # Set command hints

@@ -10,11 +10,7 @@ ADMIN_CHAT_ID = int(environ.get("ADMIN_CHAT_ID"))
 
 SENTRY_URL = environ.get("SENTRY_URL")
 
-POSTGRE_DB = environ.get("POSTGRES_DB")
-POSTGRES_USER = environ.get("POSTGRES_USER")
-POSTGRES_PASSWORD = environ.get("POSTGRES_PASSWORD")
-POSTGRES_HOST = environ.get("POSTGRES_HOST")
-POSTGRES_PORT = environ.get("POSTGRES_PORT")
+DATABASE_URL = environ.get("DATABASE_URL")
 
 REDIS_HOST = environ.get("REDIS_HOST")
 REDIS_PORT = environ.get("REDIS_PORT")
