@@ -27,8 +27,9 @@ class QuerySetPaginationKeyboard(InlineKeyboardMarkup):
         return ceil(await self.qs.count() / self.count)
 
     async def get_keyboard(self, current_page: int) -> t.Tuple["QuerySetPaginationKeyboard", t.List]:
-        self.data = await self.qs.offset(0 if current_page == 1 else (self.count * (current_page - 1))).limit(
-            self.count)
+        self.data = await self.qs.offset(
+            0 if current_page == 1 else (self.count * (current_page - 1))
+        ).limit(self.count)
         if current_page != 1:
             self.insert(
                 types.InlineKeyboardButton("◀️", callback_data=f"{self.handler_name}_{current_page - 1}")
