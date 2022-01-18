@@ -117,7 +117,7 @@ async def render_links_del_buttons(data, paginator):
 async def links_handler(message: types.Message):
     user, created = await User.get_from_message(message)
     paginator, data = await (
-        QuerySetPaginationKeyboard(await Link.get_unread_links_by_owner(user), 10, "links")
+        QuerySetPaginationKeyboard(await Link.get_unread_links_by_owner(user), "links")
     ).get_keyboard(1)
     if data:
         reply_message = await render_links_message(data, 1)
@@ -132,7 +132,7 @@ async def links_page_handler(callback_query: types.CallbackQuery):
     user, created = await User.get_or_create(tg_id=callback_query.from_user.id)
     page = int(callback_query.data.removeprefix("links_paginator_"))
     paginator, data = await (
-        QuerySetPaginationKeyboard(await Link.get_unread_links_by_owner(user), 10, "links")
+        QuerySetPaginationKeyboard(await Link.get_unread_links_by_owner(user), "links")
     ).get_keyboard(page)
     reply_message = await render_links_message(data, page)
     paginator = await render_links_del_buttons(data, paginator)
