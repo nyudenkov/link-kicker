@@ -1,9 +1,9 @@
 import functools
 
 from aiogram import types
-from loguru import logger
 
 from app.bot import bot
+from app.misc.sentry import capture_exception
 
 
 def catch_error(func):
@@ -12,7 +12,7 @@ def catch_error(func):
         try:
             return await func(*args, **kwargs)
         except Exception as ex:
-            logger.error(ex)
+            capture_exception(ex)
             msg, chat_id = args[0], 0
             if type(msg) == types.CallbackQuery:
                 chat_id = msg.message.chat.id
