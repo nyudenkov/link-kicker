@@ -14,11 +14,13 @@ class QuerySetPaginationKeyboard(InlineKeyboardMarkup):
     qs: QuerySet
     max_page: int
     count: int
+    page: int
 
-    def __init__(self, qs: QuerySet, handler_name: str, count: int = config.PAGINATION_ITEMS_COUNT,
+    def __init__(self, qs: QuerySet, handler_name: str, page: int = 1, count: int = config.PAGINATION_ITEMS_COUNT,
                  inline_keyboard=None, **kwargs):
         super(QuerySetPaginationKeyboard, self).__init__(row_width=2, inline_keyboard=inline_keyboard, **kwargs)
         self.qs = qs
+        self.page = page
         self.count = count
         self.handler_name = handler_name + "_paginator"
 
@@ -26,17 +28,17 @@ class QuerySetPaginationKeyboard(InlineKeyboardMarkup):
     async def max_page(self) -> int:
         return ceil(await self.qs.count() / self.count)
 
-    async def get_keyboard(self, current_page: int) -> t.Tuple["QuerySetPaginationKeyboard", t.List]:
+    async def get_keyboard(self) -> t.Tuple["QuerySetPaginationKeyboard", t.List]:
         self.data = await self.qs.offset(
-            0 if current_page == 1 else (self.count * (current_page - 1))
+            0 if self.page == 1 else (self.count * (self.page - 1))
         ).limit(self.count)
-        if current_page != 1:
+        if self.page != 1:
             self.insert(
-                types.InlineKeyboardButton("◀️", callback_data=f"{self.handler_name}_{current_page - 1}")
+                types.InlineKeyboardButton("◀️", callback_data=f"{self.handler_name}_{self.page - 1}")
             )
-        if current_page != await self.max_page:
+        if self.page != await self.max_page:
             self.insert(
-                types.InlineKeyboardButton("▶️", callback_data=f"{self.handler_name}_{current_page + 1}")
+                types.InlineKeyboardButton("▶️", callback_data=f"{self.handler_name}_{self.page + 1}")
             )
         self.row()
         return self, self.data

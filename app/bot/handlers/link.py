@@ -59,13 +59,7 @@ async def get_random_link_handler(message: types.Message):
     await message.reply(message_text, reply_markup=markup)
 
 
-@utils.catch_intent(intent=enums.Intent.DELETE)
-@utils.catch_error
-async def del_link_handler(callback_query: types.CallbackQuery):
-    user, created = await User.get_or_create(tg_id=callback_query.from_user.id)
-    link: Link = await Link.get(id=callback_query.data.removeprefix("del_"), owner=user)
-    await link.delete()
-
+async def del_button_from_markup(callback_query: types.CallbackQuery):
     new_markup = callback_query.message.reply_markup
     if isinstance(new_markup.inline_keyboard[0], list):
         for idx_list, buttons_list in enumerate(new_markup.inline_keyboard):
@@ -74,15 +68,40 @@ async def del_link_handler(callback_query: types.CallbackQuery):
                     new_markup.inline_keyboard[idx_list].pop(idx)
                     break
     else:
-        new_markup = callback_query.message.reply_markup
         for idx, button in enumerate(new_markup.inline_keyboard):
             if button[0].callback_data == callback_query.data:
                 new_markup.inline_keyboard.pop(idx)
                 break
+    return new_markup
 
+
+@utils.catch_intent(intent=enums.Intent.DELETE)
+@utils.catch_error
+async def del_link_handler(callback_query: types.CallbackQuery):
+    user, created = await User.get_or_create(tg_id=callback_query.from_user.id)
+    link: Link = await Link.get(id=callback_query.data.removeprefix("del_"), owner=user)
+    await link.delete()
+    new_markup = await del_button_from_markup(callback_query)
     await callback_query.message.edit_reply_markup(new_markup)
     sent = await callback_query.message.answer(Message.LINK_DELETED)
     scheduler.add_job(delete_message, timedelta_trigger(timedelta(seconds=3)), (sent.chat.id, sent.message_id))
+
+
+@utils.catch_intent(intent=enums.Intent.DELETE)
+@utils.catch_error
+async def del_link_from_links_handler(callback_query: types.CallbackQuery):
+    user, created = await User.get_or_create(tg_id=callback_query.from_user.id)
+    link_id, page = map(int, callback_query.data.removeprefix("links_del_").split("_"))
+    link: Link = await Link.get(id=link_id, owner=user)
+    await link.delete()
+    paginator, data = await (
+        QuerySetPaginationKeyboard(await Link.get_unread_links_by_owner(user), "links", page)
+    ).get_keyboard()
+    reply_message = await render_links_message(data, page)
+    paginator = await render_links_del_buttons(data, paginator)
+    await callback_query.message.edit_text(reply_message, reply_markup=paginator, disable_web_page_preview=True)
+    await callback_query.answer("Ссылка удалена", show_alert=True)
+
 
 
 @utils.catch_intent(intent=enums.Intent.READ)
@@ -107,7 +126,7 @@ async def render_links_message(data, page):
 async def render_links_del_buttons(data, paginator):
     for idx, link in enumerate(data, 1):
         paginator.insert(
-            types.InlineKeyboardButton(f"🗑 {idx}", callback_data=f"del_{link.id}")
+            types.InlineKeyboardButton(f"🗑 {idx}", callback_data=f"links_del_{link.id}_{paginator.page}")
         )
     return paginator
 
@@ -118,7 +137,7 @@ async def links_handler(message: types.Message):
     user, created = await User.get_from_message(message)
     paginator, data = await (
         QuerySetPaginationKeyboard(await Link.get_unread_links_by_owner(user), "links")
-    ).get_keyboard(1)
+    ).get_keyboard()
     if data:
         reply_message = await render_links_message(data, 1)
         paginator = await render_links_del_buttons(data, paginator)
@@ -132,8 +151,8 @@ async def links_page_handler(callback_query: types.CallbackQuery):
     user, created = await User.get_or_create(tg_id=callback_query.from_user.id)
     page = int(callback_query.data.removeprefix("links_paginator_"))
     paginator, data = await (
-        QuerySetPaginationKeyboard(await Link.get_unread_links_by_owner(user), "links")
-    ).get_keyboard(page)
+        QuerySetPaginationKeyboard(await Link.get_unread_links_by_owner(user), "links", page)
+    ).get_keyboard()
     reply_message = await render_links_message(data, page)
     paginator = await render_links_del_buttons(data, paginator)
     await callback_query.message.edit_text(reply_message, reply_markup=paginator, disable_web_page_preview=True)

@@ -26,6 +26,5 @@ welcome_text = """👋 Велком!
 
 async def send_welcome(message: types.Message):
     await User.get_from_message(message)
-    # await message.reply("👋 Велком!\nПросто присылай мне ссылки и я буду каждый день отправлять тебе по паре штук.")
     await message.reply(welcome_text)
     await HourForm.start(hour_form_callback)
