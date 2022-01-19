@@ -8,6 +8,7 @@ from app import commands
 from app import config
 from app.bot import bot
 from app.bot import handlers
+from app.bot import middlewares
 from app.database import TORTOISE_ORM
 from app.misc import set_commands
 from app.misc.sentry import init_sentry
@@ -29,6 +30,8 @@ async def startup(dispatcher: Dispatcher):
 
     # Set command hints
     await set_commands(dispatcher, commands)
+
+    middlewares.setup(dispatcher)
 
     logger.info("Start scheduler")
     scheduler.start()

@@ -1,9 +1,8 @@
 from aiogram import Dispatcher
-from aiogram import types
 
-from app import constants
 from app.bot.handlers import feedback
 from app.bot.handlers import hour
+from app.bot.handlers import language
 from app.bot.handlers import link
 from app.bot.handlers import mailing
 from app.bot.handlers import statistics
@@ -16,6 +15,8 @@ def setup(dp: Dispatcher):
     dp.register_message_handler(feedback.feedback_handler, commands="feedback")
 
     dp.register_message_handler(hour.hour_handler, commands="hour")
+
+    dp.register_message_handler(language.language_handler, commands="language")
 
     dp.register_message_handler(mailing.mailing_handler, commands="admin_mailing")
 

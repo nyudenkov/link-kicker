@@ -7,6 +7,7 @@ from tortoise.transactions import in_transaction
 from app import enums
 from app.bot import utils
 from app.bot.messages import get_random_link_message
+from app.bot.middlewares import i18n
 from app.bot.utils.pagination import QuerySetPaginationKeyboard
 from app.constants import Message
 from app.constants import Regexp
@@ -15,6 +16,8 @@ from app.database.models import User
 from app.tasks import scheduler
 from app.tasks import timedelta_trigger
 from app.tasks.jobs import delete_message
+
+_ = i18n.gettext
 
 
 @utils.catch_intent(intent=enums.Intent.ADD)
@@ -25,9 +28,9 @@ async def link_handler(message: types.Message):
 
     markup = types.InlineKeyboardMarkup()
     markup.insert(
-        types.InlineKeyboardButton(Message.DELETE, callback_data=f"del_{link.id}")
+        types.InlineKeyboardButton(_(Message.DELETE), callback_data=f"del_{link.id}")
     )
-    await message.reply(Message.SAVED_LINK, reply_markup=markup)
+    await message.reply(_(Message.SAVED_LINK), reply_markup=markup)
 
 
 @utils.catch_intent(intent=enums.Intent.ADD)
@@ -40,15 +43,15 @@ async def message_link_handler(message: types.Message):
         for url in re.finditer(Regexp.LINK, message.text):
             link = await Link.create(url=url.group(), owner=user)
             markup.insert(
-                types.InlineKeyboardButton(Message.F_DELETE_URL.format(link.url), callback_data=f"del_{link.id}")
+                types.InlineKeyboardButton(_(Message.F_DELETE_URL).format(link.url), callback_data=f"del_{link.id}")
             )
             links_count += 1
     if links_count == 1:
-        await message.reply(Message.SAVED_LINK, reply_markup=markup)
+        await message.reply(_(Message.SAVED_LINK), reply_markup=markup)
     elif links_count > 1:
-        await message.reply(Message.F_SAVED_LINKS_COUNT.format(links_count), reply_markup=markup)
+        await message.reply(_(Message.F_SAVED_LINKS_COUNT).format(links_count), reply_markup=markup)
     else:
-        await message.reply(Message.LINK_NOT_FOUND)
+        await message.reply(_(Message.LINK_NOT_FOUND))
 
 
 @utils.catch_intent(intent=enums.Intent.RANDOM)
@@ -56,7 +59,7 @@ async def message_link_handler(message: types.Message):
 async def get_random_link_handler(message: types.Message):
     user, created = await User.get_from_message(message)
     message_text, markup = await get_random_link_message(user)
-    await message.reply(message_text, reply_markup=markup)
+    await message.reply(_(message_text), reply_markup=markup)
 
 
 async def del_button_from_markup(callback_query: types.CallbackQuery):
@@ -83,7 +86,7 @@ async def del_link_handler(callback_query: types.CallbackQuery):
     await link.delete()
     new_markup = await del_button_from_markup(callback_query)
     await callback_query.message.edit_reply_markup(new_markup)
-    sent = await callback_query.message.answer(Message.LINK_DELETED)
+    sent = await callback_query.message.answer(_(Message.LINK_DELETED))
     scheduler.add_job(delete_message, timedelta_trigger(timedelta(seconds=3)), (sent.chat.id, sent.message_id))
 
 
@@ -100,7 +103,7 @@ async def del_link_from_links_handler(callback_query: types.CallbackQuery):
     reply_message = await render_links_message(data, page)
     paginator = await render_links_del_buttons(data, paginator)
     await callback_query.message.edit_text(reply_message, reply_markup=paginator, disable_web_page_preview=True)
-    await callback_query.answer("Ссылка удалена", show_alert=True)
+    await callback_query.answer(_("Ссылка удалена"), show_alert=True)
 
 
 @utils.catch_intent(intent=enums.Intent.READ)
@@ -117,7 +120,7 @@ async def read_link_handler(callback_query: types.CallbackQuery):
 
 
 async def render_links_message(data, page):
-    return Message.F_LINKS.format(
+    return _(Message.F_LINKS).format(
         page, "\n".join([f"{idx}. {link.url}" for idx, link in enumerate(data, 1)])
     )
 

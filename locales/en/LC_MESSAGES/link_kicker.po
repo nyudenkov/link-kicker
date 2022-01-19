@@ -1,0 +1,188 @@
+# English translations for LinkKicker.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the LinkKicker project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LinkKicker VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-01-19 04:58+0200\n"
+"PO-Revision-Date: 2022-01-19 00:18+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: app/constants.py:68
+msgid "🧐️ Прочитано"
+msgstr "🧐️ Viewed"
+
+#: app/constants.py:69
+msgid "🗑 Удалить"
+msgstr "🗑 Delete"
+
+#: app/constants.py:70
+msgid "🤘 Ссылку сохранил"
+msgstr "🤘 Saved your link"
+
+#: app/constants.py:71
+msgid ""
+"🍻 Все ссылочки уже прочитаны, мне нечего тебе отправить. Пополняй запасы "
+":)"
+msgstr "🍻 All the links have been read, I have nothing to send you. Restock :)"
+
+#: app/constants.py:72
+msgid ""
+"☹️ Мне тебе нечего отправлять в ежедневной рассылке! Давай-давай, закинь "
+"еще ссылочек\n"
+"\n"
+"➡️ Оставить отзыв: /feedback"
+msgstr ""
+"☹️ I have nothing to send you in the daily mailing! Go on, throw in some "
+"links\n"
+"\n"
+"➡️ Send feedback: /feedback"
+
+#: app/constants.py:73
+#, fuzzy
+msgid "🗑 Ссылку удалил"
+msgstr "🗑 Link was deleted"
+
+#: app/constants.py:74
+msgid "🤸‍♀️ Йоу, минус одна непрочитанная ссылка!"
+msgstr "🤸‍♀️ Yo, minus one unread link!"
+
+#: app/constants.py:75
+msgid "🤔 Ссылок в сообщении не найдено"
+msgstr "🤔 No links found in the message"
+
+#: app/constants.py:76
+msgid ""
+"Хочешь оставить отзыв о работе бота?\n"
+"https://forms.gle/uCbnjoq746AJKKdr9"
+msgstr ""
+"Want to leave feedback?\n"
+"https://forms.gle/uCbnjoq746AJKKdr9"
+
+#: app/constants.py:77
+msgid "🤘 Добавил ссылки из сообщения ({})"
+msgstr "🤘 Added links from the message ({})"
+
+#: app/constants.py:78
+msgid ""
+"📈 Твоя статистика:\n"
+"Добавлено ссылок: {}\n"
+"Из них прочитано (за все время): {} 🦾"
+msgstr ""
+"📈 Your stats:\n"
+"Links added: {}\n"
+"Been read (all time): {} 🦾"
+
+#: app/constants.py:79
+msgid ""
+"📈 Статистика бота:\n"
+"Добавлено ссылок: {}\n"
+"Прочитали: {}"
+msgstr ""
+
+#: app/constants.py:80
+msgid "📤 {}"
+msgstr "📤 {}"
+
+#: app/constants.py:81
+msgid "🗑 Удалить {}"
+msgstr "🗑 Delete {}"
+
+#: app/constants.py:82
+msgid ""
+"📤 Привет! Твоя ссылочка почитать на сегодня: {}\n"
+"\n"
+"➡️ Оставить отзыв: /feedback"
+msgstr ""
+"📤 Hi! Your link to read for today {}\n"
+"\n"
+"➡️ Send feedback: /feedback"
+
+#: app/constants.py:83
+msgid ""
+"Твои непрочитанные ссылки (страница {}):\n"
+"{}"
+msgstr ""
+"Your unread links (page {}):\n"
+"{}"
+
+#: app/bot/forms/hour.py:14
+msgid ""
+"Напиши час во сколько тебе будет удобно получать ссылочку (по Московскому"
+" времени, надо написать цифру от 1 до 24)"
+msgstr ""
+"Write the hour at which it would be comfortable for you to receive the "
+"link (Moscow time, you must write a number from 1 to 24)"
+
+#: app/bot/forms/hour.py:19
+msgid "Тебе нужно написать цифру от 1 до 24"
+msgstr "You need to write a number from 1 to 24"
+
+#: app/bot/forms/hour.py:32
+msgid ""
+"Начнём? Отправляй любую ссылку в диалог и получишь ее в {}:00 по "
+"Московскому времени 👇🏻"
+msgstr ""
+"Let's get started? Send any link to the dialogue and you'll get it at "
+"{}:00 Moscow time 👇🏻"
+
+#: app/bot/forms/hour.py:35
+msgid ""
+"Отправляй любую ссылку в диалог и получишь ее в {}:00 по Московскому "
+"времени 👇🏻"
+msgstr "Send any link to the dialogue and you'll get it at {}:00 Moscow time 👇🏻"
+
+#: app/bot/forms/language.py:17
+msgid "Выбери язык"
+msgstr "Choose language"
+
+#: app/bot/handlers/link.py:106
+msgid "Ссылка удалена"
+msgstr "Link was deleted"
+
+#: app/bot/handlers/start.py:10
+msgid ""
+"👋 Велком!\n"
+"У тебя как и у меня есть проблема с тем, что ты забываешь прочесть "
+"сохранённые в закладках статьи?\n"
+"Бот поможет! (надеюсь, потому что мне помог) \n"
+"Он будет каждый день отправлять тебе по ссылочке на прочтение.\n"
+"\n"
+"Как это работает:\n"
+"* Ты отправляешь боту любую ссылку\n"
+"* Ждешь пока наступит время рассылки\n"
+"* Читаешь свою статью и помечаешь ее прочитанной у бота (под ссылкой "
+"будет кнопочка)\n"
+"* Радуешься своей продуктивности!\n"
+"\n"
+"Появилось желание прочесть что-то из добавленных ссылок, но не хочешь "
+"ждать наступления времени рассылки?\n"
+"Используй команду /random :)\n"
+msgstr ""
+"👋 Welcome!\n"
+"Do you, like me, have a problem with forgetting to read articles you've saved?\n"
+"The bot will help! (I hope so because it helped me)\n"
+"It will send you a link to read every day.\n"
+"\n"
+"How it works:\n"
+"* You send the bot any link\n"
+"* You wait until it's time to send it out\n"
+"* Read your article and mark it read by the bot (there will be a button under the link)\n"
+"* Enjoying your productivity!\n"
+"\n"
+"Want to read some added links, but don't want to wait for the newsletter?\n"
+"Use the /random command :)\n"
+
+#~ msgid "Успешно установлен язык {}"
+#~ msgstr "Successfully set {} language"
+
