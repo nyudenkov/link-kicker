@@ -50,7 +50,7 @@ aiogram = "^2.13"
 type = "git"
 url = "https://github.com/FMajesty/aiogram-forms.git"
 reference = "master"
-resolved_reference = "090ad632abeeb9742176b48c2e5b0797b12b88cb"
+resolved_reference = "7120b7ef0d760527abc2a631637d8d593111c719"
 
 [[package]]
 name = "aiohttp"

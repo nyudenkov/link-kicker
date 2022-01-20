@@ -12,12 +12,11 @@ _ = i18n.gettext
 
 
 class LanguageForm(forms.Form):
-    language_keyboard = types.ReplyKeyboardMarkup(
-        one_time_keyboard=True
-    ).add(*[types.KeyboardButton('en'), types.KeyboardButton('ru')])
+    languages = [language.label for language in i18n.AVAILABLE_LANGUAGES.values()]
+    language_keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True).add(*languages)
     language = fields.ChoicesField(
         label=_("Выбери язык"),
-        choices=["en", "ru"],
+        choices=languages,
         reply_keyboard=language_keyboard
     )
 
@@ -26,13 +25,19 @@ async def language_form_callback():
     user, created = await User.get_or_create(tg_id=types.Chat.get_current().id)
     data = await LanguageForm.get_data()
     language = data["LanguageForm:language"]
-    user.language_iso = language
-    await user.save()
-    i18n.ctx_locale.set(language)
-
+    for lang_key, lang_data in i18n.AVAILABLE_LANGUAGES.items():
+        if lang_data.label == language:
+            user.language_iso = lang_key
+            await user.save()
+            i18n.ctx_locale.set(lang_key)
+            await bot.send_message(
+                chat_id=user.tg_id,
+                text="👌"
+            )
+            return
     await bot.send_message(
         chat_id=user.tg_id,
-        text="👌"
+        text="Something went wrong."
     )
 
 
