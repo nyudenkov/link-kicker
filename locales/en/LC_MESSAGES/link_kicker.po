@@ -113,6 +113,11 @@ msgstr ""
 "Your unread links (page {}):\n"
 "{}"
 
+#: app/constants.py:84
+#, fuzzy
+msgid "🥲 Ссылка {} уже добавлена"
+msgstr "🥲 Link {} was already added"
+
 #: app/bot/forms/hour.py:14
 msgid ""
 "Напиши час во сколько тебе будет удобно получать ссылочку (по Московскому"
@@ -143,7 +148,7 @@ msgstr "Send any link to the dialogue and you'll get it at {}:00 Moscow time �
 msgid "Выбери язык"
 msgstr "Choose language"
 
-#: app/bot/handlers/link.py:106
+#: app/bot/handlers/link.py:112
 msgid "Ссылка удалена"
 msgstr "Link was deleted"
 
