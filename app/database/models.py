@@ -15,6 +15,7 @@ class User(mixins.ModelMixin):
     id = fields.IntField(pk=True)
     tg_id = fields.IntField(unique=True)
     hour = fields.SmallIntField(null=True)
+    language_iso = fields.CharField(max_length=2, null=True)
 
     links: fields.ReverseRelation["Link"]
 
@@ -41,9 +42,6 @@ class Link(mixins.ModelMixin):
             return await cls.get(id=choice(link_ids))
         return None
 
-    # @classmethod
-    # async def get_unread_links_by_owner(cls, owner: User) -> t.Optional[t.List["Link"]]:
-    #     return await cls.filter(owner=owner, was_read=False)
     @classmethod
     async def get_unread_links_by_owner(cls, owner: User) -> "QuerySet":
         return cls.filter(owner=owner, was_read=False)
