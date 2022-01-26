@@ -39,9 +39,14 @@ async def message_link_handler(message: types.Message):
     user, created = await User.get_from_message(message)
     markup = types.InlineKeyboardMarkup(row_width=1)
     links_count = 0
+    skipped_link = False
     async with in_transaction():
         for url in re.finditer(Regexp.LINK, message.text):
-            link = await Link.create(url=url.group(), owner=user)
+            link, created = await Link.get_or_create(url=url.group(), owner=user, was_read=False)
+            if not created:
+                await message.reply(_(Message.F_LINK_ALREADY_WAS_ADDED).format(link.url))
+                skipped_link = True
+                continue
             markup.insert(
                 types.InlineKeyboardButton(_(Message.F_DELETE_URL).format(link.url), callback_data=f"del_{link.id}")
             )
@@ -51,7 +56,8 @@ async def message_link_handler(message: types.Message):
     elif links_count > 1:
         await message.reply(_(Message.F_SAVED_LINKS_COUNT).format(links_count), reply_markup=markup)
     else:
-        await message.reply(_(Message.LINK_NOT_FOUND))
+        if not skipped_link:
+            await message.reply(_(Message.LINK_NOT_FOUND))
 
 
 @utils.catch_intent(intent=enums.Intent.RANDOM)
