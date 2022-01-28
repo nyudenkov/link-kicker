@@ -1,7 +1,8 @@
 from aiogram import types
+from aiogram_dialog import DialogManager
+from aiogram_dialog import StartMode
 
-from app.bot.forms import LanguageForm
-from app.bot.forms import start_language_form_callback
+from app.bot.dialogs import LanguageDialogSG
 from app.bot.middlewares import i18n
 from app.database.models import User
 
@@ -23,7 +24,7 @@ welcome_text = _("""👋 Велком!
 """)
 
 
-async def send_welcome(message: types.Message):
+async def send_welcome(message: types.Message, dialog_manager: DialogManager):
     await User.get_from_message(message)
     await message.reply(_(welcome_text))
-    await LanguageForm.start(start_language_form_callback)
+    await dialog_manager.start(LanguageDialogSG.main, data=True, mode=StartMode.RESET_STACK)

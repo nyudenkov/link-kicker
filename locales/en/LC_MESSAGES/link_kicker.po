@@ -1,8 +1,9 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: LinkKicker VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-01-26 19:24+0200\n"
+"POT-Creation-Date: 2022-01-28 10:29+0200\n"
 "PO-Revision-Date: 2022-01-26 02:15+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -118,19 +119,7 @@ msgstr ""
 msgid "🥲 Ссылка {} уже добавлена"
 msgstr "🥲 Link {} was already added"
 
-#: app/bot/forms/hour.py:14
-msgid ""
-"Напиши час во сколько тебе будет удобно получать ссылочку (по Московскому"
-" времени, надо написать цифру от 1 до 24)"
-msgstr ""
-"Please write what time is more suitable for link drop (Moscow time, you "
-"must choose a number from 1 to 24)"
-
-#: app/bot/forms/hour.py:19
-msgid "Тебе нужно написать цифру от 1 до 24"
-msgstr "You need to choose a number from 1 to 24"
-
-#: app/bot/forms/hour.py:32
+#: app/bot/dialogs/hour.py:34
 msgid ""
 "Начнём? Отправляй любую ссылку в диалог и получишь ее в {}:00 по "
 "Московскому времени 👇🏻"
@@ -138,13 +127,29 @@ msgstr ""
 "Let's start? Send any link to the dialogue and you'll get it at {}:00 "
 "Moscow time 👇🏻"
 
-#: app/bot/forms/hour.py:35
+#: app/bot/dialogs/hour.py:37
 msgid ""
 "Отправляй любую ссылку в диалог и получишь ее в {}:00 по Московскому "
 "времени 👇🏻"
 msgstr "Send any link to the dialogue and you'll get it at {}:00 Moscow time 👇🏻"
 
-#: app/bot/forms/language.py:18
+#: app/bot/dialogs/hour.py:46
+msgid ""
+"Напиши час во сколько тебе будет удобно получать ссылочку (по Московскому"
+" времени, надо написать цифру от 0 до 23)"
+msgstr ""
+"Please write what time is more suitable for link drop (Moscow time, you "
+"must choose a number from 0 to 23)"
+
+#: app/bot/dialogs/hour.py:53
+msgid "Тебе нужно написать цифру от 0 до 23"
+msgstr "You need to choose a number from 0 to 23"
+
+#: app/bot/dialogs/language.py:34
+msgid "👌 Успешно установлен {} язык"
+msgstr "👌 Successfully set {} language"
+
+#: app/bot/dialogs/language.py:43
 msgid "Выбери язык"
 msgstr "Choose language"
 
@@ -152,7 +157,7 @@ msgstr "Choose language"
 msgid "Ссылка удалена"
 msgstr "Link was deleted"
 
-#: app/bot/handlers/start.py:10
+#: app/bot/handlers/start.py:11
 msgid ""
 "👋 Велком!\n"
 "У тебя как и у меня есть проблема с тем, что ты забываешь прочесть "

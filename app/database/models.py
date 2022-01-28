@@ -23,6 +23,14 @@ class User(mixins.ModelMixin):
     async def get_from_message(cls, message: types.Message) -> t.Tuple["User", bool]:
         return await cls.get_or_create(tg_id=message.from_user.id)
 
+    async def set_language(self, lang: str) -> None:
+        self.language_iso = lang
+        await self.save()
+
+    async def set_hour(self, hour: int) -> None:
+        self.hour = hour
+        await self.save()
+
 
 class Link(mixins.ModelMixin):
     id = fields.IntField(pk=True)
