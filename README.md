@@ -10,4 +10,5 @@ This bot was created to solve this problem.
 3. Create `commands.yaml` with `cp commands.yaml.example commands.yaml` and change command descriptions if you want
 4. Install [poetry](https://python-poetry.org/) on your machine (or just `pip install poetry` in env)
 5. Run `poetry install` in the root folder
-6. Run `make run`
+6. Run `pybabel compile -d locales -D link_kicker` in the root folder for compiling locales
+7. Run `make run`
