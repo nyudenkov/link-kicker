@@ -11,3 +11,4 @@ class Intent(str, Enum):
     HOUR = "hour"
     LINKS = "links"
     LANGUAGE = "language"
+    MAILING = "mailing"

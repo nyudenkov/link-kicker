@@ -17,6 +17,8 @@ class User(mixins.ModelMixin):
     hour = fields.SmallIntField(null=True)
     language_iso = fields.CharField(max_length=2, null=True)
 
+    mailing = fields.BooleanField(default=True)
+
     links: fields.ReverseRelation["Link"]
 
     @classmethod

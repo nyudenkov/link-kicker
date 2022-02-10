@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LinkKicker VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-01-28 10:29+0200\n"
+"POT-Creation-Date: 2022-02-10 05:35+0300\n"
 "PO-Revision-Date: 2022-01-26 02:15+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -68,10 +68,24 @@ msgstr ""
 "https://forms.gle/uCbnjoq746AJKKdr9"
 
 #: app/constants.py:77
+msgid ""
+"🥲 Ежедневная рассылка отключена, не забывай про меня! Можешь использовать"
+" /random для получения случайной ссылки или /links для просмотра списка "
+"еще непрочитанных"
+msgstr "🥲 The daily mailing is off, but don't forget about me! You can use /random to get a random link or /links to see a list of those still unread"
+
+#: app/constants.py:78
+msgid ""
+"🥰 Ежедневная рассылка включена! Кстати, можно использовать /random для "
+"получения случайной ссылки или /links для просмотра списка еще "
+"непрочитанных"
+msgstr "🥰 The daily mailing is on! Also, you can use /random to get a random link or /links to see a list of those still unread"
+
+#: app/constants.py:79
 msgid "🤘 Добавил ссылки из сообщения ({})"
 msgstr "🤘 Added links from the message ({})"
 
-#: app/constants.py:78
+#: app/constants.py:80
 msgid ""
 "📈 Твоя статистика:\n"
 "Добавлено ссылок: {}\n"
@@ -81,22 +95,22 @@ msgstr ""
 "Links added: {}\n"
 "Been read (all time): {} 🦾"
 
-#: app/constants.py:79
+#: app/constants.py:81
 msgid ""
 "📈 Статистика бота:\n"
 "Добавлено ссылок: {}\n"
 "Прочитали: {}"
 msgstr ""
 
-#: app/constants.py:80
+#: app/constants.py:82
 msgid "📤 {}"
 msgstr "📤 {}"
 
-#: app/constants.py:81
+#: app/constants.py:83
 msgid "🗑 Удалить {}"
 msgstr "🗑 Delete {}"
 
-#: app/constants.py:82
+#: app/constants.py:84
 msgid ""
 "📤 Привет! Твоя ссылочка почитать на сегодня: {}\n"
 "\n"
@@ -106,7 +120,7 @@ msgstr ""
 "\n"
 "➡️ Send feedback: /feedback"
 
-#: app/constants.py:83
+#: app/constants.py:85
 msgid ""
 "Твои непрочитанные ссылки (страница {}):\n"
 "{}"
@@ -114,7 +128,7 @@ msgstr ""
 "Your unread links (page {}):\n"
 "{}"
 
-#: app/constants.py:84
+#: app/constants.py:86
 #, fuzzy
 msgid "🥲 Ссылка {} уже добавлена"
 msgstr "🥲 Link {} was already added"

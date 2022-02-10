@@ -26,6 +26,7 @@ def setup(dp: Dispatcher):
     dp.register_message_handler(link.message_link_handler, lambda m: m.text and m.text[0] != "/")
     dp.register_message_handler(link.get_random_link_handler, commands="random")
     dp.register_message_handler(link.links_handler, commands="links")
+    dp.register_message_handler(link.switch_link_mailing, commands="mailing")
     dp.register_callback_query_handler(link.del_link_handler, lambda c: c.data and c.data.startswith("del"))
     dp.register_callback_query_handler(link.read_link_handler, lambda c: c.data and c.data.startswith("read"))
     dp.register_callback_query_handler(

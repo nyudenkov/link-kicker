@@ -151,7 +151,7 @@ async def links_handler(message: types.Message):
         paginator = await render_links_del_buttons(data, paginator)
         await message.reply(reply_message, reply_markup=paginator, disable_web_page_preview=True)
         return
-    await message.reply(Message.NOTHING_TO_SEND)
+    await message.reply(_(Message.NOTHING_TO_SEND))
 
 
 @utils.catch_error
@@ -164,3 +164,12 @@ async def links_page_handler(callback_query: types.CallbackQuery):
     reply_message = await render_links_message(data, page)
     paginator = await render_links_del_buttons(data, paginator)
     await callback_query.message.edit_text(reply_message, reply_markup=paginator, disable_web_page_preview=True)
+
+
+@utils.catch_intent(intent=enums.Intent.MAILING)
+@utils.catch_error
+async def switch_link_mailing(message: types.Message):
+    user, created = await User.get_from_message(message)
+    user.mailing = not user.mailing
+    await user.save()
+    await message.reply(_(Message.MAILING_ON if user.mailing else Message.MAILING_OFF))
