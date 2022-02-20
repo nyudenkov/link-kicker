@@ -12,10 +12,10 @@ async def set_commands(dp: Dispatcher, commands: dict):
     """
     Set command hints
     """
-
-    await dp.bot.set_my_commands(
-        [BotCommand(command, description) for command, description in commands.items()]
-    )
+    for lang_code, descriptions in commands.items():
+        await dp.bot.set_my_commands(
+            [BotCommand(command, description) for command, description in descriptions.items()], language_code=lang_code
+        )
 
 
 def parse_config(path):
