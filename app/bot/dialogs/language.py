@@ -3,16 +3,16 @@ from typing import Any
 from aiogram.dispatcher.filters.state import State
 from aiogram.dispatcher.filters.state import StatesGroup
 from aiogram.types import CallbackQuery
-from aiogram.types import Message
 from aiogram_dialog import Dialog
 from aiogram_dialog import DialogManager
 from aiogram_dialog import StartMode
 from aiogram_dialog import Window
-from aiogram_dialog.widgets.input import MessageInput
+from aiogram_dialog.widgets.kbd import Cancel
 from aiogram_dialog.widgets.kbd import Select
 from aiogram_dialog.widgets.text import Format
+from aiogram_dialog.widgets.when import Whenable
 
-from app.bot.dialogs import HourDialogSG
+from app.bot.dialogs.timezone import TimezoneDialogSG
 from app.bot.dialogs.widgets.text import IConst
 from app.bot.middlewares import i18n
 from app.database.models import User
@@ -35,7 +35,11 @@ async def on_lang_clicked(c: CallbackQuery, select: Any, manager: DialogManager,
     await manager.done()
 
     if context.start_data:
-        await manager.start(HourDialogSG.main, mode=StartMode.RESET_STACK)
+        await manager.start(TimezoneDialogSG.main, data=True, mode=StartMode.RESET_STACK)
+
+
+def can_be_cancelled(data: dict, widget: Whenable, manager: DialogManager):
+    return manager.current_context().start_data is None
 
 
 language_dialog = Dialog(
@@ -48,6 +52,7 @@ language_dialog = Dialog(
             id="lang",
             on_click=on_lang_clicked,
         ),
+        Cancel(IConst(_("Отменить действие")), when=can_be_cancelled),
         state=LanguageDialogSG.main,
     )
 )

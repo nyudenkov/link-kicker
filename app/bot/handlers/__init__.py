@@ -6,6 +6,7 @@ from app.bot.handlers import language
 from app.bot.handlers import link
 from app.bot.handlers import mailing
 from app.bot.handlers import statistics
+from app.bot.handlers import timezone
 from app.bot.handlers.start import send_welcome
 
 
@@ -15,6 +16,7 @@ def setup(dp: Dispatcher):
     dp.register_message_handler(feedback.feedback_handler, commands="feedback")
 
     dp.register_message_handler(hour.hour_handler, commands="hour")
+    dp.register_message_handler(timezone.timezone_handler, commands="timezone")
 
     dp.register_message_handler(language.language_handler, commands="language")
 

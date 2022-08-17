@@ -1,6 +1,5 @@
 from datetime import datetime
 
-import pytz
 from aiogram.utils import exceptions as aiogram_exceptions
 from loguru import logger
 
@@ -24,12 +23,9 @@ async def send_mailing_message(user):
 
 
 async def link_mailing():
-    now_hour: int = datetime.now(pytz.timezone("Europe/Moscow")).hour
+    now_hour: int = datetime.utcnow().hour
     for user in await User.filter(hour=now_hour, mailing=True):
         await send_mailing_message(user)
-    if now_hour == 18:
-        for user in await User.filter(hour__isnull=True, mailing=True):
-            await send_mailing_message(user)
 
 
 async def delete_message(chat_id: int, message_id: int):

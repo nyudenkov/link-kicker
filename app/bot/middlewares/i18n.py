@@ -28,8 +28,8 @@ class I18nMiddleware(BaseI18nMiddleware):
     }
 
     async def get_user_locale(self, action: str, args: Tuple[Any]) -> str:
-        if isinstance(args[0], types.Message):
-            user, created = await User.get_from_message(args[0])
+        if isinstance(args[0], (types.Message, types.CallbackQuery)):
+            user, _ = await User.get_or_create(tg_id=args[0].from_user.id)
             if user.language_iso:
                 return user.language_iso
 

@@ -14,7 +14,10 @@ __all__ = ["User", "Link", "StatisticsRecord"]
 class User(mixins.ModelMixin):
     id = fields.IntField(pk=True)
     tg_id = fields.IntField(unique=True)
+
     hour = fields.SmallIntField(null=True)
+    hour_utc_offset = fields.SmallIntField(null=True)
+
     language_iso = fields.CharField(max_length=2, null=True)
 
     mailing = fields.BooleanField(default=True)
@@ -27,10 +30,6 @@ class User(mixins.ModelMixin):
 
     async def set_language(self, lang: str) -> None:
         self.language_iso = lang
-        await self.save()
-
-    async def set_hour(self, hour: int) -> None:
-        self.hour = hour
         await self.save()
 
 

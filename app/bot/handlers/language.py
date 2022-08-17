@@ -1,9 +1,9 @@
 from aiogram import types
 from aiogram_dialog import DialogManager
 from aiogram_dialog import StartMode
-from app.bot.dialogs import LanguageDialogSG
 
 from app import enums
+from app.bot.dialogs import LanguageDialogSG
 from app.bot.utils import catch_error
 from app.bot.utils.statistics import catch_intent
 from app.database.models import User
