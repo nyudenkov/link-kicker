@@ -18,5 +18,5 @@ class IConst(Const):
 class IFormat(Format):
     async def _render_text(self, data: Dict, manager: DialogManager) -> str:
         if manager.is_preview():
-            return _(self.text.format_map(_FormatDataStub(data=data)))
-        return _(self.text.format_map(manager.current_context().dialog_data | data))
+            return _(self.text).format_map(_FormatDataStub(data=data))
+        return _(self.text).format_map(manager.current_context().dialog_data | data)

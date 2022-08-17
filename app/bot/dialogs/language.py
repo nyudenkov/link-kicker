@@ -15,6 +15,7 @@ from aiogram_dialog.widgets.when import Whenable
 from app.bot.dialogs.timezone import TimezoneDialogSG
 from app.bot.dialogs.widgets.text import IConst
 from app.bot.middlewares import i18n
+from app.constants import welcome_text
 from app.database.models import User
 
 _ = i18n.gettext
@@ -27,14 +28,15 @@ class LanguageDialogSG(StatesGroup):
 
 async def on_lang_clicked(c: CallbackQuery, select: Any, manager: DialogManager, lang_label: str):
     user, created = await User.get_or_create(tg_id=c.from_user.id)
-    context = manager.current_context()
+    ctx = manager.current_context()
     lang = languages[lang_label]
     i18n.ctx_locale.set(lang)
     await user.set_language(lang)
     await c.message.edit_text(_("👌 Успешно установлен {} язык").format(lang_label))
     await manager.done()
 
-    if context.start_data:
+    if ctx.start_data:
+        await c.bot.edit_message_text(_(welcome_text), c.from_user.id, ctx.start_data['message_id'])
         await manager.start(TimezoneDialogSG.main, data=True, mode=StartMode.RESET_STACK)
 
 
