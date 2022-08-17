@@ -3,6 +3,7 @@ from typing import Any
 from aiogram.dispatcher.filters.state import State
 from aiogram.dispatcher.filters.state import StatesGroup
 from aiogram.types import CallbackQuery
+from aiogram.utils.exceptions import MessageNotModified
 from aiogram_dialog import Dialog
 from aiogram_dialog import DialogManager
 from aiogram_dialog import StartMode
@@ -36,7 +37,10 @@ async def on_lang_clicked(c: CallbackQuery, select: Any, manager: DialogManager,
     await manager.done()
 
     if ctx.start_data:
-        await c.bot.edit_message_text(_(welcome_text), c.from_user.id, ctx.start_data['message_id'])
+        try:
+            await c.bot.edit_message_text(_(welcome_text), c.from_user.id, ctx.start_data['message_id'])
+        except MessageNotModified:
+            pass
         await manager.start(TimezoneDialogSG.main, data=True, mode=StartMode.RESET_STACK)
 
 
