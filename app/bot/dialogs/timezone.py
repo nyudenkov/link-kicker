@@ -45,7 +45,7 @@ class TimezoneDialogSG(StatesGroup):
 
 async def on_send_location_clicked(m: CallbackQuery, dialog: Dialog, manager: DialogManager):
     message = await m.message.answer(
-        _("Или нажмите на кнопку ниже"),
+        _("Или нажми на кнопку ниже"),
         reply_markup=ReplyKeyboardMarkup(
             [[KeyboardButton(text=_("Отправить локацию"), request_location=True)]], one_time_keyboard=True
         )
@@ -59,10 +59,11 @@ async def delete_location_request_message(callback: CallbackQuery, dialog: Dialo
 
 
 async def on_location_sent(message: Message, dialog: Dialog, manager: DialogManager):
+    ctx = manager.current_context()
     user, _ = await User.get_from_message(message)
 
     # Here's the dumbest way to delete reply_keyboard from 'on_send_location_clicked'
-    await message.reply_to_message.delete()
+    await message.chat.delete_message(ctx.dialog_data['location_request_msg_id'])
 
     location = message.location
     timezone_str = TimezoneFinder().certain_timezone_at(lat=location.latitude, lng=location.longitude)
@@ -77,7 +78,6 @@ async def on_location_sent(message: Message, dialog: Dialog, manager: DialogMana
 
 async def save_timezone_on_offset_input(m: Message, dialog: Dialog, manager: DialogManager):
     if re.match(Regexp.NUM_WITH_SYMBOL, m.text):
-        ctx = manager.current_context()
         value = int(m.text)
         user, _ = await User.get_from_message(m)
         user.hour_utc_offset = value
@@ -108,7 +108,9 @@ def can_be_cancelled(data: dict, widget: Whenable, manager: DialogManager):
 timezone_dialog = Dialog(
     Window(
         IConst(_(
-            "Отправь свою локацию чтобы определить часовой пояс или выбери вручную"
+            "Отправь свою локацию чтобы определить часовой пояс или выбери вручную\n"
+            "<i>В случае отправления локации боту, данные будут использованы только единожды для определения часового "
+            "пояса и не будут сохранены.</i>"
         )),
         Group(
             SwitchTo(
@@ -129,7 +131,7 @@ timezone_dialog = Dialog(
     ),
 
     Window(
-        IConst(_("Отправьте свою локацию (вложения -> локация)")),
+        IConst(_("Отправь свою локацию (Вложения -> Локация)")),
         SwitchTo(
             IConst(_("Вернуться назад")),
             id="back",
@@ -142,9 +144,11 @@ timezone_dialog = Dialog(
 
     Window(
         IConst(_(
-            "Необходимо написать разницу вашего часового пояса с UTC\n"
-            "Например: -2 или +4\n"
-            "Можно использовать <a href='https://www.timeanddate.com/time/difference/timezone/utc'>этот сайт</a>"
+            "Напиши разницу твоего часового пояса с UTC\n"
+            "Например: разница Москвы с UTC - +3 часа, надо написать <b>+3</b>; "
+            "разница Нью-Йорка с UTC - -4 часа, надо написать <b>-4</b>\n"
+            "Чтобы узнать разницу, можно использовать "
+            "<a href='https://www.timeanddate.com/time/difference/timezone/utc'>этот сайт</a>"
         )),
         SwitchTo(
             IConst(_("Вернуться назад")),
@@ -156,19 +160,19 @@ timezone_dialog = Dialog(
     ),
 
     Window(
-        IFormat(_("Часовой пояс определен верно? <b>{timezone_output}</b>")),
+        IFormat(_("Я правильно определил твой часовой пояс? <b>{timezone_output}</b>")),
         Group(
             Button(
-                IConst(_("Верно")),
+                IConst(_("Да")),
                 id='right_tz',
                 on_click=save_timezone,
             ),
             SwitchTo(
-                IConst(_("Вернуться в начало")),
+                IConst(_("Нет")),
                 id="back",
                 state=TimezoneDialogSG.main,
             ),
-            width=1,
+            width=2,
         ),
         state=TimezoneDialogSG.check_timezone,
     ),

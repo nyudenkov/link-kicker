@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-08-17 15:30+0300\n"
+"POT-Creation-Date: 2022-08-17 23:31+0300\n"
 "PO-Revision-Date: 2022-01-19 03:28+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -151,7 +151,7 @@ msgid ""
 msgstr ""
 
 #: app/bot/dialogs/hour.py:59 app/bot/dialogs/hour.py:65
-#: app/bot/dialogs/language.py:57 app/bot/dialogs/timezone.py:127
+#: app/bot/dialogs/language.py:57 app/bot/dialogs/timezone.py:129
 msgid "Отменить действие"
 msgstr ""
 
@@ -168,48 +168,52 @@ msgid "Выбери язык"
 msgstr ""
 
 #: app/bot/dialogs/timezone.py:48
-msgid "Или нажмите на кнопку ниже"
+msgid "Или нажми на кнопку ниже"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:50 app/bot/dialogs/timezone.py:115
+#: app/bot/dialogs/timezone.py:50 app/bot/dialogs/timezone.py:117
 msgid "Отправить локацию"
 msgstr ""
 
 #: app/bot/dialogs/timezone.py:110
-msgid "Отправь свою локацию чтобы определить часовой пояс или выбери вручную"
+msgid ""
+"Отправь свою локацию чтобы определить часовой пояс или выбери вручную\n"
+"<i>В случае отправления локации боту, данные будут использованы только "
+"единожды для определения часового пояса и не будут сохранены.</i>"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:121
+#: app/bot/dialogs/timezone.py:123
 msgid "Выбрать вручную"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:132
-msgid "Отправьте свою локацию (вложения -> локация)"
+#: app/bot/dialogs/timezone.py:134
+msgid "Отправь свою локацию (Вложения -> Локация)"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:134 app/bot/dialogs/timezone.py:150
+#: app/bot/dialogs/timezone.py:136 app/bot/dialogs/timezone.py:154
 msgid "Вернуться назад"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:144
+#: app/bot/dialogs/timezone.py:146
 msgid ""
-"Необходимо написать разницу вашего часового пояса с UTC\n"
-"Например: -2 или +4\n"
-"Можно использовать <a "
+"Напиши разницу твоего часового пояса с UTC\n"
+"Например: разница Москвы с UTC - +3 часа, надо написать <b>+3</b>; "
+"разница Нью-Йорка с UTC - -4 часа, надо написать <b>-4</b>\n"
+"Чтобы узнать разницу, можно использовать <a "
 "href='https://www.timeanddate.com/time/difference/timezone/utc'>этот "
 "сайт</a>"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:159
-msgid "Часовой пояс определен верно? <b>{timezone_output}</b>"
+#: app/bot/dialogs/timezone.py:163
+msgid "Я правильно определил твой часовой пояс? <b>{timezone_output}</b>"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:162
-msgid "Верно"
+#: app/bot/dialogs/timezone.py:166
+msgid "Да"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:167
-msgid "Вернуться в начало"
+#: app/bot/dialogs/timezone.py:171
+msgid "Нет"
 msgstr ""
 
 #: app/bot/handlers/link.py:112
@@ -233,5 +237,31 @@ msgstr ""
 #~ "удобно получать ссылочку (по Московскому "
 #~ "времени, надо написать цифру от 0 "
 #~ "до 23)"
+#~ msgstr ""
+
+#~ msgid "Или нажмите на кнопку ниже"
+#~ msgstr ""
+
+#~ msgid "Отправь свою локацию чтобы определить часовой пояс или выбери вручную"
+#~ msgstr ""
+
+#~ msgid "Отправьте свою локацию (вложения -> локация)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Необходимо написать разницу вашего часового пояса с UTC\n"
+#~ "Например: -2 или +4\n"
+#~ "Можно использовать <a "
+#~ "href='https://www.timeanddate.com/time/difference/timezone/utc'>этот"
+#~ " сайт</a>"
+#~ msgstr ""
+
+#~ msgid "Часовой пояс определен верно? <b>{timezone_output}</b>"
+#~ msgstr ""
+
+#~ msgid "Верно"
+#~ msgstr ""
+
+#~ msgid "Вернуться в начало"
 #~ msgstr ""
 
