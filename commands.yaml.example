@@ -3,10 +3,16 @@ en:
   random: Get random link from unread
   links: List of unread links
   statistics: Personal statistics
-  feedback: Leave a feedback
+  feedback: Leave suggestion/tell about bug
+  timezone: Change time zone
+  hour: Change mailing hour
+  language: Change language
 
 ru:
   random: Получить случайную ссылку из непрочитанных
   links: Список непрочитанных ссылок
   statistics: Персональная статистика
-  feedback: Оставить предложение/отзыв
+  feedback: Оставить предложение/рассказать об ошибке
+  timezone: Сменить часовой пояс
+  hour: Сменить время для рассылок
+  language: Сменить язык
