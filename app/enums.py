@@ -9,6 +9,12 @@ class Intent(str, Enum):
     STATISTICS = "statistics"
     FEEDBACK = "feedback"
     HOUR = "hour"
+    TIMEZONE = "timezone"
     LINKS = "links"
     LANGUAGE = "language"
     MAILING = "mailing"
+
+
+class ReportType(str, Enum):
+    BUG = "bug"
+    FEATURE = "feature"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-08-17 23:31+0300\n"
+"POT-Creation-Date: 2022-08-20 01:44+0300\n"
 "PO-Revision-Date: 2022-01-19 03:28+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -140,6 +140,44 @@ msgid ""
 "Используй команду /random :)\n"
 msgstr ""
 
+#: app/bot/dialogs/feedback.py:32
+msgid "найденного бага. Расскажи, как его повторить 🪳"
+msgstr ""
+
+#: app/bot/dialogs/feedback.py:34
+msgid "своего предложения"
+msgstr ""
+
+#: app/bot/dialogs/feedback.py:36 app/bot/utils/errors.py:24
+msgid "Возникла ошибка, сообщи @nyudenkov, пожалуйста"
+msgstr ""
+
+#: app/bot/dialogs/feedback.py:44
+msgid "Спасибо!"
+msgstr ""
+
+#: app/bot/dialogs/feedback.py:50
+msgid "Выбери чем хочешь поделиться"
+msgstr ""
+
+#: app/bot/dialogs/feedback.py:53
+msgid "Ошибкой"
+msgstr ""
+
+#: app/bot/dialogs/feedback.py:59
+msgid "Предложением"
+msgstr ""
+
+#: app/bot/dialogs/feedback.py:66 app/bot/dialogs/feedback.py:71
+#: app/bot/dialogs/hour.py:59 app/bot/dialogs/hour.py:65
+#: app/bot/dialogs/language.py:61 app/bot/dialogs/timezone.py:129
+msgid "Отменить действие"
+msgstr ""
+
+#: app/bot/dialogs/feedback.py:70
+msgid "Поделись, пожалуйста, деталями {message_state_text}"
+msgstr ""
+
 #: app/bot/dialogs/hour.py:45
 msgid "Начнём? Отправляй любую ссылку в диалог и получишь ее в {}:00 👇🏻"
 msgstr ""
@@ -150,20 +188,15 @@ msgid ""
 "от 0 до 23)"
 msgstr ""
 
-#: app/bot/dialogs/hour.py:59 app/bot/dialogs/hour.py:65
-#: app/bot/dialogs/language.py:57 app/bot/dialogs/timezone.py:129
-msgid "Отменить действие"
-msgstr ""
-
 #: app/bot/dialogs/hour.py:64
 msgid "Тебе нужно написать цифру от 0 до 23"
 msgstr ""
 
-#: app/bot/dialogs/language.py:35
+#: app/bot/dialogs/language.py:36
 msgid "👌 Успешно установлен {} язык"
 msgstr ""
 
-#: app/bot/dialogs/language.py:49
+#: app/bot/dialogs/language.py:53
 msgid "Выбери язык"
 msgstr ""
 

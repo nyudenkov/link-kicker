@@ -1,18 +1,18 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: LinkKicker VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-08-17 23:31+0300\n"
+"POT-Creation-Date: 2022-08-20 01:44+0300\n"
 "PO-Revision-Date: 2022-08-17 23:41+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: English\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
-"X-Generator: PO File Editor https://pofile.net/free-po-editor\n"
 
 #: app/constants.py:68
 msgid "🧐️ Прочитано"
@@ -27,7 +27,9 @@ msgid "🤘 Ссылку сохранил"
 msgstr "🤘 Saved your link"
 
 #: app/constants.py:71
-msgid "🍻 Все ссылочки уже прочитаны, мне нечего тебе отправить. Пополняй запасы :)"
+msgid ""
+"🍻 Все ссылочки уже прочитаны, мне нечего тебе отправить. Пополняй запасы "
+":)"
 msgstr ""
 "🍻 All of the saved links have been visited already. I am proud of you, "
 "keep me updated ;)"
@@ -39,8 +41,8 @@ msgid ""
 "\n"
 "➡️ Оставить отзыв: /feedback"
 msgstr ""
-"☹️ There is no daily link today. I am bored. You need to feed the beast to "
-"get links every day.\n"
+"☹️ There is no daily link today. I am bored. You need to feed the beast "
+"to get links every day.\n"
 "\n"
 "➡️ Send feedback: /feedback"
 
@@ -66,20 +68,22 @@ msgstr ""
 
 #: app/constants.py:78
 msgid ""
-"🥲 Ежедневная рассылка отключена, не забывай про меня! Можешь использовать "
-"/random для получения случайной ссылки или /links для просмотра списка еще "
-"непрочитанных"
+"🥲 Ежедневная рассылка отключена, не забывай про меня! Можешь использовать"
+" /random для получения случайной ссылки или /links для просмотра списка "
+"еще непрочитанных"
 msgstr ""
-"🥲 The daily mailing is off, but don't forget about me! You can use /random "
-"to get a random link or /links to see a list of those still unread"
+"🥲 The daily mailing is off, but don't forget about me! You can use "
+"/random to get a random link or /links to see a list of those still "
+"unread"
 
 #: app/constants.py:80
 msgid ""
 "🥰 Ежедневная рассылка включена! Кстати, можно использовать /random для "
-"получения случайной ссылки или /links для просмотра списка еще непрочитанных"
+"получения случайной ссылки или /links для просмотра списка еще "
+"непрочитанных"
 msgstr ""
-"🥰 The daily mailing is on! Also, you can use /random to get a random link "
-"or /links to see a list of those still unread"
+"🥰 The daily mailing is on! Also, you can use /random to get a random link"
+" or /links to see a list of those still unread"
 
 #: app/constants.py:82
 msgid "🤘 Добавил ссылки из сообщения ({})"
@@ -143,29 +147,68 @@ msgid ""
 "Как это работает:\n"
 "* Ты отправляешь боту любую ссылку\n"
 "* Ждешь пока наступит время рассылки\n"
-"* Читаешь свою статью и помечаешь ее прочитанной у бота (под ссылкой будет "
-"кнопочка)\n"
+"* Читаешь свою статью и помечаешь ее прочитанной у бота (под ссылкой "
+"будет кнопочка)\n"
 "* Радуешься своей продуктивности!\n"
 "\n"
-"Появилось желание прочесть что-то из добавленных ссылок, но не хочешь ждать "
-"наступления времени рассылки?\n"
+"Появилось желание прочесть что-то из добавленных ссылок, но не хочешь "
+"ждать наступления времени рассылки?\n"
 "Используй команду /random :)\n"
 msgstr ""
 "👋 Welcome my friend!\n"
-"You are here because you have the same problem as mine - forgetting to read "
-"articles you've saved for later\n"
+"You are here because you have the same problem as mine - forgetting to "
+"read articles you've saved for later\n"
 "The bot will save your life (and links)! \n"
 "It will send you a link to read every day.\n"
 "\n"
 "How it works:\n"
 "* You send the bot any link you want to save \n"
 "* Wait until it's time for newsletter\n"
-"* Read your article and mark it \"read\" by the bot (you will find a button "
-"under the link)\n"
+"* Read your article and mark it \"read\" by the bot (you will find a "
+"button under the link)\n"
 "* Enjoy your productivity!\n"
 "\n"
-"Feel ready to open more links, but can't wait for the newsletter to arrive?\n"
+"Feel ready to open more links, but can't wait for the newsletter to "
+"arrive?\n"
 "Use the /random command :)\n"
+
+#: app/bot/dialogs/feedback.py:32
+msgid "найденного бага. Расскажи, как его повторить 🪳"
+msgstr "of bug you found. Tell me, how to repeat it 🪳"
+
+#: app/bot/dialogs/feedback.py:34
+msgid "своего предложения"
+msgstr "of your suggestion"
+
+#: app/bot/dialogs/feedback.py:36 app/bot/utils/errors.py:24
+msgid "Возникла ошибка, сообщи @nyudenkov, пожалуйста"
+msgstr "Error occurred! Tell about it @nyudenkov, please."
+
+#: app/bot/dialogs/feedback.py:44
+msgid "Спасибо!"
+msgstr "Thank you!"
+
+#: app/bot/dialogs/feedback.py:50
+msgid "Выбери чем хочешь поделиться"
+msgstr "Choose what you want to share"
+
+#: app/bot/dialogs/feedback.py:53
+msgid "Ошибкой"
+msgstr "Found Bug"
+
+#: app/bot/dialogs/feedback.py:59
+msgid "Предложением"
+msgstr "New Feature"
+
+#: app/bot/dialogs/feedback.py:66 app/bot/dialogs/feedback.py:71
+#: app/bot/dialogs/hour.py:59 app/bot/dialogs/hour.py:65
+#: app/bot/dialogs/language.py:61 app/bot/dialogs/timezone.py:129
+msgid "Отменить действие"
+msgstr "Cancel action"
+
+#: app/bot/dialogs/feedback.py:70
+msgid "Поделись, пожалуйста, деталями {message_state_text}"
+msgstr "Please share details {message_state_text}"
 
 #: app/bot/dialogs/hour.py:45
 msgid "Начнём? Отправляй любую ссылку в диалог и получишь ее в {}:00 👇🏻"
@@ -173,26 +216,21 @@ msgstr "Let's start? Send any link to the dialogue and you'll get it at {}:00 �
 
 #: app/bot/dialogs/hour.py:56
 msgid ""
-"Напиши час во сколько тебе будет удобно получать ссылочку (напиши цифру от "
-"0 до 23)"
+"Напиши час во сколько тебе будет удобно получать ссылочку (напиши цифру "
+"от 0 до 23)"
 msgstr ""
 "Please write what time is more suitable for link drop (you must choose a "
 "number from 0 to 23)"
-
-#: app/bot/dialogs/hour.py:59 app/bot/dialogs/hour.py:65
-#: app/bot/dialogs/language.py:57 app/bot/dialogs/timezone.py:129
-msgid "Отменить действие"
-msgstr "Cancel action"
 
 #: app/bot/dialogs/hour.py:64
 msgid "Тебе нужно написать цифру от 0 до 23"
 msgstr "You need to choose a number from 0 to 23"
 
-#: app/bot/dialogs/language.py:35
+#: app/bot/dialogs/language.py:36
 msgid "👌 Успешно установлен {} язык"
 msgstr "👌 Successfully set {} language"
 
-#: app/bot/dialogs/language.py:49
+#: app/bot/dialogs/language.py:53
 msgid "Выбери язык"
 msgstr "Choose language"
 
@@ -211,8 +249,8 @@ msgid ""
 "единожды для определения часового пояса и не будут сохранены.</i>"
 msgstr ""
 "Send your location so I can know your time zone or choose it yourself.\n"
-"<i>Once the location is sent to the bot, the data will be used only once to "
-"detect the time zone and not will be saved</i>"
+"<i>Once the location is sent to the bot, the data will be used only once "
+"to detect the time zone and not will be saved</i>"
 
 #: app/bot/dialogs/timezone.py:123
 msgid "Выбрать вручную"
@@ -229,16 +267,16 @@ msgstr "Back"
 #: app/bot/dialogs/timezone.py:146
 msgid ""
 "Напиши разницу твоего часового пояса с UTC\n"
-"Например: разница Москвы с UTC - +3 часа, надо написать <b>+3</b>; разница "
-"Нью-Йорка с UTC - -4 часа, надо написать <b>-4</b>\n"
+"Например: разница Москвы с UTC - +3 часа, надо написать <b>+3</b>; "
+"разница Нью-Йорка с UTC - -4 часа, надо написать <b>-4</b>\n"
 "Чтобы узнать разницу, можно использовать <a "
 "href='https://www.timeanddate.com/time/difference/timezone/utc'>этот "
 "сайт</a>"
 msgstr ""
 "Write your time zone difference with UTC\n"
-"For example: the difference between Moscow and UTC is +3 hours, you need to "
-"write <b>+3</b>; the difference between New York and UTC is -4 hours, you "
-"need to write <b>-4</b>\n"
+"For example: the difference between Moscow and UTC is +3 hours, you need "
+"to write <b>+3</b>; the difference between New York and UTC is -4 hours, "
+"you need to write <b>-4</b>\n"
 "For detecting difference, you can use <a "
 "href='https://www.timeanddate.com/time/difference/timezone/utc'>this "
 "website</a>"
@@ -263,17 +301,20 @@ msgstr "Link was deleted"
 #~ msgstr "Link was deleted"
 
 #~ msgid ""
-#~ "Отправляй любую ссылку в диалог и получишь ее в {}:00 по Московскому "
+#~ "Отправляй любую ссылку в диалог и "
+#~ "получишь ее в {}:00 по Московскому "
 #~ "времени 👇🏻"
 #~ msgstr "Send any link to the dialogue and you'll get it at {}:00 Moscow time 👇🏻"
 
 #~ msgid "Отправь свою локацию чтобы определить часовой пояс или выбери вручную"
 #~ msgstr ""
-#~ "Send your location, so I can know your time zone or choose time zone "
-#~ "yourself"
+#~ "Send your location, so I can know"
+#~ " your time zone or choose time "
+#~ "zone yourself"
 
 #~ msgid "Верно"
 #~ msgstr "Correct"
 
 #~ msgid "Вернуться в начало"
 #~ msgstr "Start again"
+

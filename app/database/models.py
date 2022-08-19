@@ -8,7 +8,7 @@ from tortoise.queryset import QuerySet
 from app import enums
 from app.database import mixins
 
-__all__ = ["User", "Link", "StatisticsRecord"]
+__all__ = ["User", "Link", "StatisticsRecord", "FeedbackReport"]
 
 
 class User(mixins.ModelMixin):
@@ -58,3 +58,8 @@ class Link(mixins.ModelMixin):
 
 class StatisticsRecord(mixins.CreatedMixin):
     intent = fields.CharEnumField(enums.Intent)
+
+
+class FeedbackReport(mixins.CreatedMixin):
+    type = fields.CharEnumField(enums.ReportType)
+    text = fields.TextField()
