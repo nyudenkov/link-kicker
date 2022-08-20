@@ -13,7 +13,7 @@ __all__ = ["User", "Link", "StatisticsRecord", "FeedbackReport"]
 
 class User(mixins.ModelMixin):
     id = fields.IntField(pk=True)
-    tg_id = fields.IntField(unique=True)
+    tg_id = fields.BigIntField(unique=True)
 
     hour = fields.SmallIntField(null=True)
     hour_utc_offset = fields.SmallIntField(null=True)

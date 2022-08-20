@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-08-20 01:44+0300\n"
+"POT-Creation-Date: 2022-08-20 21:46+0300\n"
 "PO-Revision-Date: 2022-01-19 03:28+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -140,42 +140,47 @@ msgid ""
 "Используй команду /random :)\n"
 msgstr ""
 
-#: app/bot/dialogs/feedback.py:32
+#: app/bot/dialogs/feedback.py:33
 msgid "найденного бага. Расскажи, как его повторить 🪳"
 msgstr ""
 
-#: app/bot/dialogs/feedback.py:34
+#: app/bot/dialogs/feedback.py:35
 msgid "своего предложения"
 msgstr ""
 
-#: app/bot/dialogs/feedback.py:36 app/bot/utils/errors.py:24
+#: app/bot/dialogs/feedback.py:37 app/bot/utils/errors.py:24
 msgid "Возникла ошибка, сообщи @nyudenkov, пожалуйста"
 msgstr ""
 
-#: app/bot/dialogs/feedback.py:44
+#: app/bot/dialogs/feedback.py:45
 msgid "Спасибо!"
 msgstr ""
 
-#: app/bot/dialogs/feedback.py:50
+#: app/bot/dialogs/feedback.py:51
 msgid "Выбери чем хочешь поделиться"
 msgstr ""
 
-#: app/bot/dialogs/feedback.py:53
+#: app/bot/dialogs/feedback.py:54
 msgid "Ошибкой"
 msgstr ""
 
-#: app/bot/dialogs/feedback.py:59
+#: app/bot/dialogs/feedback.py:60
 msgid "Предложением"
 msgstr ""
 
-#: app/bot/dialogs/feedback.py:66 app/bot/dialogs/feedback.py:71
-#: app/bot/dialogs/hour.py:59 app/bot/dialogs/hour.py:65
-#: app/bot/dialogs/language.py:61 app/bot/dialogs/timezone.py:129
+#: app/bot/dialogs/feedback.py:67 app/bot/dialogs/hour.py:59
+#: app/bot/dialogs/hour.py:65 app/bot/dialogs/language.py:61
+#: app/bot/dialogs/timezone.py:130
 msgid "Отменить действие"
 msgstr ""
 
-#: app/bot/dialogs/feedback.py:70
+#: app/bot/dialogs/feedback.py:71
 msgid "Поделись, пожалуйста, деталями {message_state_text}"
+msgstr ""
+
+#: app/bot/dialogs/feedback.py:72 app/bot/dialogs/timezone.py:137
+#: app/bot/dialogs/timezone.py:155
+msgid "Вернуться назад"
 msgstr ""
 
 #: app/bot/dialogs/hour.py:45
@@ -200,34 +205,30 @@ msgstr ""
 msgid "Выбери язык"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:48
+#: app/bot/dialogs/timezone.py:49
 msgid "Или нажми на кнопку ниже"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:50 app/bot/dialogs/timezone.py:117
+#: app/bot/dialogs/timezone.py:51 app/bot/dialogs/timezone.py:118
 msgid "Отправить локацию"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:110
+#: app/bot/dialogs/timezone.py:111
 msgid ""
 "Отправь свою локацию чтобы определить часовой пояс или выбери вручную\n"
 "<i>В случае отправления локации боту, данные будут использованы только "
 "единожды для определения часового пояса и не будут сохранены.</i>"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:123
+#: app/bot/dialogs/timezone.py:124
 msgid "Выбрать вручную"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:134
+#: app/bot/dialogs/timezone.py:135
 msgid "Отправь свою локацию (Вложения -> Локация)"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:136 app/bot/dialogs/timezone.py:154
-msgid "Вернуться назад"
-msgstr ""
-
-#: app/bot/dialogs/timezone.py:146
+#: app/bot/dialogs/timezone.py:147
 msgid ""
 "Напиши разницу твоего часового пояса с UTC\n"
 "Например: разница Москвы с UTC - +3 часа, надо написать <b>+3</b>; "
@@ -237,15 +238,21 @@ msgid ""
 "сайт</a>"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:163
+#: app/bot/dialogs/timezone.py:164
+msgid ""
+"Произошла ошибочка! На примере с Москвой - надо написать просто "
+"<b>+3</b>; с Нью-Йорком - <b>-4</b>"
+msgstr ""
+
+#: app/bot/dialogs/timezone.py:172
 msgid "Я правильно определил твой часовой пояс? <b>{timezone_output}</b>"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:166
+#: app/bot/dialogs/timezone.py:175
 msgid "Да"
 msgstr ""
 
-#: app/bot/dialogs/timezone.py:171
+#: app/bot/dialogs/timezone.py:180
 msgid "Нет"
 msgstr ""
 

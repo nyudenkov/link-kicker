@@ -39,6 +39,7 @@ class TimezoneDialogSG(StatesGroup):
     location_sent = State()
 
     choose_timezone = State()
+    repeat_timezone_input = State()
 
     check_timezone = State()
 
@@ -77,8 +78,8 @@ async def on_location_sent(message: Message, dialog: Dialog, manager: DialogMana
 
 
 async def save_timezone_on_offset_input(m: Message, dialog: Dialog, manager: DialogManager):
-    if re.match(Regexp.NUM_WITH_SYMBOL, m.text):
-        value = int(m.text)
+    if match := re.match(Regexp.NUM_WITH_SYMBOL, m.text):
+        value = int(match.group())
         user, _ = await User.get_from_message(m)
         user.hour_utc_offset = value
         await user.save()
@@ -87,7 +88,7 @@ async def save_timezone_on_offset_input(m: Message, dialog: Dialog, manager: Dia
         await manager.start(HourDialogSG.main, data=True, mode=StartMode.RESET_STACK)
         return
 
-    await manager.dialog().switch_to(TimezoneDialogSG.choose_timezone)
+    await manager.dialog().switch_to(TimezoneDialogSG.repeat_timezone_input)
 
 
 async def save_timezone(callback: CallbackQuery, dialog: Dialog, manager: DialogManager):
@@ -157,6 +158,14 @@ timezone_dialog = Dialog(
         ),
         MessageInput(save_timezone_on_offset_input),
         state=TimezoneDialogSG.choose_timezone,
+    ),
+
+    Window(
+        IConst(_(
+            "Произошла ошибочка! На примере с Москвой - надо написать просто <b>+3</b>; с Нью-Йорком - <b>-4</b>"
+        )),
+        MessageInput(save_timezone_on_offset_input),
+        state=TimezoneDialogSG.repeat_timezone_input,
     ),
 
     Window(
