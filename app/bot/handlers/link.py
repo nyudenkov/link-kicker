@@ -122,7 +122,7 @@ async def read_link_handler(callback_query: types.CallbackQuery):
     link.was_read = True
     await link.save()
     await callback_query.message.delete_reply_markup()
-    await callback_query.message.reply(Message.LINK_WAS_READ)
+    await callback_query.message.reply(_(Message.LINK_WAS_READ))
 
 
 async def render_links_message(data, page):
