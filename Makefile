@@ -26,4 +26,7 @@ format:
 check:
 	$(ruff) check .
 
+check-fix:
+	$(ruff) check --fix .
+
 lint: check format

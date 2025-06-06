@@ -1,19 +1,10 @@
-from aiogram.dispatcher.filters.state import State
-from aiogram.dispatcher.filters.state import StatesGroup
-from aiogram.types import CallbackQuery
-from aiogram.types import Message
-from aiogram_dialog import Dialog
-from aiogram_dialog import DialogManager
-from aiogram_dialog import Window
+from aiogram.dispatcher.filters.state import State, StatesGroup
+from aiogram.types import CallbackQuery, Message
+from aiogram_dialog import Dialog, DialogManager, Window
 from aiogram_dialog.widgets.input import MessageInput
-from aiogram_dialog.widgets.kbd import Back
-from aiogram_dialog.widgets.kbd import Button
-from aiogram_dialog.widgets.kbd import Cancel
-from aiogram_dialog.widgets.kbd import Group
-from aiogram_dialog.widgets.kbd import SwitchTo
+from aiogram_dialog.widgets.kbd import Back, Button, Cancel, Group, SwitchTo
 
-from app.bot.dialogs.widgets.text import IConst
-from app.bot.dialogs.widgets.text import IFormat
+from app.bot.dialogs.widgets.text import IConst, IFormat
 from app.bot.middlewares import i18n
 from app.database.models import FeedbackReport
 

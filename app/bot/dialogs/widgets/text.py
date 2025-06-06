@@ -1,8 +1,7 @@
 from typing import Dict
 
 from aiogram_dialog import DialogManager
-from aiogram_dialog.widgets.text import Const
-from aiogram_dialog.widgets.text import Format
+from aiogram_dialog.widgets.text import Const, Format
 from aiogram_dialog.widgets.text.format import _FormatDataStub
 
 from app.bot.middlewares import i18n

@@ -1,15 +1,10 @@
 from typing import Any
 
-from aiogram.dispatcher.filters.state import State
-from aiogram.dispatcher.filters.state import StatesGroup
+from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.types import CallbackQuery
 from aiogram.utils.exceptions import MessageNotModified
-from aiogram_dialog import Dialog
-from aiogram_dialog import DialogManager
-from aiogram_dialog import StartMode
-from aiogram_dialog import Window
-from aiogram_dialog.widgets.kbd import Cancel
-from aiogram_dialog.widgets.kbd import Select
+from aiogram_dialog import Dialog, DialogManager, StartMode, Window
+from aiogram_dialog.widgets.kbd import Cancel, Select
 from aiogram_dialog.widgets.text import Format
 from aiogram_dialog.widgets.when import Whenable
 

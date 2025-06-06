@@ -9,12 +9,9 @@ from app.bot import utils
 from app.bot.messages import get_random_link_message
 from app.bot.middlewares import i18n
 from app.bot.utils.pagination import QuerySetPaginationKeyboard
-from app.constants import Message
-from app.constants import Regexp
-from app.database.models import Link
-from app.database.models import User
-from app.tasks import scheduler
-from app.tasks import timedelta_trigger
+from app.constants import Message, Regexp
+from app.database.models import Link, User
+from app.tasks import scheduler, timedelta_trigger
 from app.tasks.jobs import delete_message
 
 _ = i18n.gettext

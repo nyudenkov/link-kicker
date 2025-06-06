@@ -1,8 +1,5 @@
-from dataclasses import dataclass
-from dataclasses import field
-from typing import Any
-from typing import Optional
-from typing import Tuple
+from dataclasses import dataclass, field
+from typing import Any, Optional, Tuple
 
 from aiogram import types
 from aiogram.contrib.middlewares.i18n import I18nMiddleware as BaseI18nMiddleware

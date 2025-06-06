@@ -1,13 +1,11 @@
 from aiogram import types
 
-from app import config
-from app import enums
+from app import config, enums
 from app.bot.middlewares import i18n
 from app.bot.utils.errors import catch_error
 from app.bot.utils.statistics import catch_intent
 from app.constants import Message
-from app.database.models import Link
-from app.database.models import User
+from app.database.models import Link, User
 
 _ = i18n.gettext
 

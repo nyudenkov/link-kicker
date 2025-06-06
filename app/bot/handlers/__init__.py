@@ -1,12 +1,14 @@
 from aiogram import Dispatcher
 
-from app.bot.handlers import feedback
-from app.bot.handlers import hour
-from app.bot.handlers import language
-from app.bot.handlers import link
-from app.bot.handlers import mailing
-from app.bot.handlers import statistics
-from app.bot.handlers import timezone
+from app.bot.handlers import (
+    feedback,
+    hour,
+    language,
+    link,
+    mailing,
+    statistics,
+    timezone,
+)
 from app.bot.handlers.start import send_welcome
 
 

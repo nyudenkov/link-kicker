@@ -2,29 +2,23 @@ import datetime
 import re
 
 import pytz
-from aiogram.dispatcher.filters.state import State
-from aiogram.dispatcher.filters.state import StatesGroup
-from aiogram.types import CallbackQuery
-from aiogram.types import ContentType
-from aiogram.types import KeyboardButton
-from aiogram.types import Message
-from aiogram.types import ReplyKeyboardMarkup
-from aiogram_dialog import Dialog
-from aiogram_dialog import DialogManager
-from aiogram_dialog import StartMode
-from aiogram_dialog import Window
+from aiogram.dispatcher.filters.state import State, StatesGroup
+from aiogram.types import (
+    CallbackQuery,
+    ContentType,
+    KeyboardButton,
+    Message,
+    ReplyKeyboardMarkup,
+)
+from aiogram_dialog import Dialog, DialogManager, StartMode, Window
 from aiogram_dialog.widgets.input import MessageInput
-from aiogram_dialog.widgets.kbd import Button
-from aiogram_dialog.widgets.kbd import Cancel
-from aiogram_dialog.widgets.kbd import Group
-from aiogram_dialog.widgets.kbd import SwitchTo
+from aiogram_dialog.widgets.kbd import Button, Cancel, Group, SwitchTo
 from aiogram_dialog.widgets.when import Whenable
 from babel import dates
 from timezonefinder import TimezoneFinder
 
 from app.bot.dialogs.hour import HourDialogSG
-from app.bot.dialogs.widgets.text import IConst
-from app.bot.dialogs.widgets.text import IFormat
+from app.bot.dialogs.widgets.text import IConst, IFormat
 from app.bot.middlewares import i18n
 from app.constants import Regexp
 from app.database.models import User

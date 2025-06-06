@@ -1,13 +1,11 @@
 from aiogram import types
-from aiogram_dialog import DialogManager
-from aiogram_dialog import StartMode
+from aiogram_dialog import DialogManager, StartMode
 
 from app import enums
 from app.bot.dialogs.feedback import FeedbackDialogSG
 from app.bot.middlewares import i18n
 from app.bot.utils.errors import catch_error
 from app.bot.utils.statistics import catch_intent
-from app.constants import Message
 from app.database.models import User
 
 _ = i18n.gettext
