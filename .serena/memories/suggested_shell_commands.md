@@ -18,9 +18,13 @@
 - `uv run aerich migrate` - Create new migration
 - `uv run aerich downgrade` - Rollback migrations
 
-## Locale Management
-- `sh scripts/compile_locales.sh` - Compile locale files (.po → .mo)
-- `sh scripts/extract_update_locales.sh` - Extract/update translatable strings
+## Locale Management (Updated for uv)
+- `sh scripts/compile_locales.sh` - Compile locale files (.po → .mo) using uv
+- `sh scripts/extract_update_locales.sh` - Extract/update translatable strings using uv
+- Direct commands:
+  - `uv run pybabel compile -d locales -D link_kicker` - Compile locales
+  - `uv run pybabel extract --input-dirs=. -o locales/link_kicker.pot` - Extract strings
+  - `uv run pybabel update -d locales -D link_kicker -i locales/link_kicker.pot` - Update locales
 
 ## Testing Environment
 - `uv run python -c "import app.config"` - Test app imports
@@ -39,3 +43,4 @@
 - NEVER run destructive commands like `rm -rf`
 - Always test imports after dependency changes
 - Use `uv sync` instead of manual pip installs
+- All Python commands should be prefixed with `uv run` to use the project environment
