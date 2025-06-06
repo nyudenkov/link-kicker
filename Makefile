@@ -1,5 +1,5 @@
 default:help
-py := python
+py := uv run python
 
 help:
 	@echo "USAGE"
