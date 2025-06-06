@@ -11,8 +11,8 @@ This bot was created to solve this problem.
 1. Clone this repo: `git clone https://github.com/nyudenkov/link-kicker`
 2. Create `.env` with `cp .env.example .env` and fill it out
 3. Create `commands.yaml` with `cp commands.yaml.example commands.yaml` and change command descriptions if you want
-4. Install [poetry](https://python-poetry.org/) on your machine (or just `pip install poetry` in env)
-5. Run `poetry install` in the root folder for requirements installing
+4. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your machine
+5. Run `uv sync` in the root folder for requirements installing
 6. Run `sh scripts/compile_locales.sh` in the root folder for compiling locales
-7. Run `aerich upgrade` in the root folder for running migrations
+7. Run `uv run aerich upgrade` in the root folder for running migrations
 8. Run `make run`
