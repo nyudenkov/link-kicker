@@ -4,14 +4,13 @@ from aiogram import types
 
 from app.bot.middlewares import i18n
 from app.constants import Message
-from app.database.models import Link
-from app.database.models import User
+from app.database.models import Link, User
 
 _ = i18n.gettext
 
 
 async def get_random_link_message(
-        user: User, mailing: bool = False
+    user: User, mailing: bool = False
 ) -> t.Tuple[t.Optional[str], t.Optional[types.InlineKeyboardMarkup]]:
     if link := await Link.get_random_by_owner(user):
         markup = types.InlineKeyboardMarkup()

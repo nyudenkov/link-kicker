@@ -1,6 +1,5 @@
 from aiogram import types
-from aiogram_dialog import DialogManager
-from aiogram_dialog import StartMode
+from aiogram_dialog import DialogManager, StartMode
 
 from app.bot.dialogs import TimezoneDialogSG
 from app.database.models import User

@@ -1,15 +1,11 @@
-from aiogram import Dispatcher
-from aiogram import executor
+from aiogram import Dispatcher, executor
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram_dialog import DialogRegistry
 from loguru import logger
 from tortoise import Tortoise
 
-from app import commands
-from app import config
-from app.bot import bot
-from app.bot import handlers
-from app.bot import middlewares
+from app import commands, config
+from app.bot import bot, handlers, middlewares
 from app.bot.dialogs import register_dialogs
 from app.database import TORTOISE_ORM
 from app.misc import set_commands
@@ -54,5 +50,8 @@ async def shutdown(dispatcher: Dispatcher):
 if __name__ == "__main__":
     # Start long-polling mode
     executor.start_polling(
-        dp, on_startup=startup, on_shutdown=shutdown, skip_updates=config.EXECUTOR_SKIP_UPDATES
+        dp,
+        on_startup=startup,
+        on_shutdown=shutdown,
+        skip_updates=config.EXECUTOR_SKIP_UPDATES,
     )

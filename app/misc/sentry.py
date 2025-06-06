@@ -7,9 +7,7 @@ from app import config
 def init_sentry() -> None:
     if config.SENTRY_URL:
         logger.info("Initializing Sentry")
-        sentry_sdk.init(
-            config.SENTRY_URL, traces_sample_rate=1.0
-        )
+        sentry_sdk.init(config.SENTRY_URL, traces_sample_rate=1.0)
 
 
 def capture_exception(exception: BaseException) -> None:

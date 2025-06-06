@@ -1,8 +1,5 @@
-from dataclasses import dataclass
-from dataclasses import field
-from typing import Any
-from typing import Optional
-from typing import Tuple
+from dataclasses import dataclass, field
+from typing import Any, Optional, Tuple
 
 from aiogram import types
 from aiogram.contrib.middlewares.i18n import I18nMiddleware as BaseI18nMiddleware
@@ -37,6 +34,6 @@ class I18nMiddleware(BaseI18nMiddleware):
         locale: Optional[Locale] = tg_user.locale if tg_user else None
         if locale and locale.language in self.locales:
             *_, data = args
-            language = data['locale'] = locale.language
+            language = data["locale"] = locale.language
             return language
         return self.default

@@ -14,6 +14,8 @@ async def mailing_handler(message: types.Message):
 
     for user in await User.all():
         try:
-            await bot.send_message(user.tg_id, message.text.removeprefix("/admin_mailing "))
+            await bot.send_message(
+                user.tg_id, message.text.removeprefix("/admin_mailing ")
+            )
         except Exception as ex:
             logger.error(ex)

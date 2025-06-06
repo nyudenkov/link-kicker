@@ -1,5 +1,6 @@
 default:help
-py := python
+py := uv run python
+ruff := uv run ruff
 
 help:
 	@echo "USAGE"
@@ -7,9 +8,9 @@ help:
 	@echo ""
 	@echo "AVAILABLE COMMANDS"
 	@echo "  run		Start a bot"
-	@echo "  black		Run black"
-	@echo "  isort		Run isort"
-	@echo "  lint		Run black and isort"
+	@echo "  format		Run ruff format"
+	@echo "  check		Run ruff check"
+	@echo "  lint		Run ruff check and format"
 
 
 # ========
@@ -19,11 +20,13 @@ help:
 run:
 	$(py) -m main
 
-black:
-	$(py) -m black .
+format:
+	$(ruff) format .
 
-isort:
-	$(py) -m isort .
+check:
+	$(ruff) check .
 
+check-fix:
+	$(ruff) check --fix .
 
-lint: black isort
+lint: check format
