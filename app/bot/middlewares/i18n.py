@@ -37,6 +37,6 @@ class I18nMiddleware(BaseI18nMiddleware):
         locale: Optional[Locale] = tg_user.locale if tg_user else None
         if locale and locale.language in self.locales:
             *_, data = args
-            language = data['locale'] = locale.language
+            language = data["locale"] = locale.language
             return language
         return self.default

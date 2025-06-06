@@ -54,5 +54,8 @@ async def shutdown(dispatcher: Dispatcher):
 if __name__ == "__main__":
     # Start long-polling mode
     executor.start_polling(
-        dp, on_startup=startup, on_shutdown=shutdown, skip_updates=config.EXECUTOR_SKIP_UPDATES
+        dp,
+        on_startup=startup,
+        on_shutdown=shutdown,
+        skip_updates=config.EXECUTOR_SKIP_UPDATES,
     )

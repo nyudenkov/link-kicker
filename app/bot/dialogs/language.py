@@ -20,14 +20,18 @@ from app.constants import welcome_text
 from app.database.models import User
 
 _ = i18n.gettext
-languages = {lang_data.label: lang for lang, lang_data in i18n.AVAILABLE_LANGUAGES.items()}
+languages = {
+    lang_data.label: lang for lang, lang_data in i18n.AVAILABLE_LANGUAGES.items()
+}
 
 
 class LanguageDialogSG(StatesGroup):
     main = State()
 
 
-async def on_lang_clicked(c: CallbackQuery, select: Any, manager: DialogManager, lang_label: str):
+async def on_lang_clicked(
+    c: CallbackQuery, select: Any, manager: DialogManager, lang_label: str
+):
     user, created = await User.get_or_create(tg_id=c.from_user.id)
     ctx = manager.current_context()
     lang = languages[lang_label]
@@ -38,10 +42,14 @@ async def on_lang_clicked(c: CallbackQuery, select: Any, manager: DialogManager,
 
     if ctx.start_data:
         try:
-            await c.bot.edit_message_text(_(welcome_text), c.from_user.id, ctx.start_data['message_id'])
+            await c.bot.edit_message_text(
+                _(welcome_text), c.from_user.id, ctx.start_data["message_id"]
+            )
         except MessageNotModified:
             pass
-        await manager.start(TimezoneDialogSG.main, data=True, mode=StartMode.RESET_STACK)
+        await manager.start(
+            TimezoneDialogSG.main, data=True, mode=StartMode.RESET_STACK
+        )
 
 
 def can_be_cancelled(data: dict, widget: Whenable, manager: DialogManager):

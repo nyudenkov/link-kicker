@@ -38,7 +38,9 @@ async def on_hour_input(m: Message, dialog: Dialog, manager: DialogManager):
         value = int(m.text)
         if validate_hour_input(value):
             user, created = await User.get_from_message(m)
-            dt_with_user_offset = datetime.today().replace(hour=value) + timedelta(hours=-user.hour_utc_offset)
+            dt_with_user_offset = datetime.today().replace(hour=value) + timedelta(
+                hours=-user.hour_utc_offset
+            )
             user.hour = dt_with_user_offset.hour
             await user.save()
             await m.reply(
@@ -53,9 +55,11 @@ async def on_hour_input(m: Message, dialog: Dialog, manager: DialogManager):
 
 hour_dialog = Dialog(
     Window(
-        IConst(_(
-            "Напиши час во сколько тебе будет удобно получать ссылочку (напиши цифру от 0 до 23)"
-        )),
+        IConst(
+            _(
+                "Напиши час во сколько тебе будет удобно получать ссылочку (напиши цифру от 0 до 23)"
+            )
+        ),
         Cancel(IConst(_("Отменить действие")), when=can_be_cancelled),
         MessageInput(on_hour_input),
         state=HourDialogSG.main,
@@ -65,5 +69,5 @@ hour_dialog = Dialog(
         Cancel(IConst(_("Отменить действие")), when=can_be_cancelled),
         MessageInput(on_hour_input),
         state=HourDialogSG.retry,
-    )
+    ),
 )

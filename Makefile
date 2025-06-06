@@ -1,5 +1,6 @@
 default:help
 py := uv run python
+ruff := uv run ruff
 
 help:
 	@echo "USAGE"
@@ -20,9 +21,9 @@ run:
 	$(py) -m main
 
 format:
-	$(py) -m ruff format .
+	$(ruff) format .
 
 check:
-	$(py) -m ruff check .
+	$(ruff) check .
 
 lint: check format

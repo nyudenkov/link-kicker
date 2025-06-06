@@ -21,6 +21,8 @@ def catch_error(func):
                 chat_id = msg.message.chat.id
             elif type(msg) == types.Message:
                 chat_id = msg.chat.id
-            await bot.send_message(chat_id, _("Возникла ошибка, сообщи @nyudenkov, пожалуйста"))
+            await bot.send_message(
+                chat_id, _("Возникла ошибка, сообщи @nyudenkov, пожалуйста")
+            )
 
     return wrapper
