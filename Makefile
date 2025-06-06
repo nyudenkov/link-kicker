@@ -7,9 +7,9 @@ help:
 	@echo ""
 	@echo "AVAILABLE COMMANDS"
 	@echo "  run		Start a bot"
-	@echo "  black		Run black"
-	@echo "  isort		Run isort"
-	@echo "  lint		Run black and isort"
+	@echo "  format		Run ruff format"
+	@echo "  check		Run ruff check"
+	@echo "  lint		Run ruff check and format"
 
 
 # ========
@@ -19,11 +19,10 @@ help:
 run:
 	$(py) -m main
 
-black:
-	$(py) -m black .
+format:
+	$(py) -m ruff format .
 
-isort:
-	$(py) -m isort .
+check:
+	$(py) -m ruff check .
 
-
-lint: black isort
+lint: check format
