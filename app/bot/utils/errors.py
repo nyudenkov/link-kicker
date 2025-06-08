@@ -17,9 +17,9 @@ def catch_error(func):
         except Exception as ex:
             capture_exception(ex)
             msg, chat_id = args[0], 0
-            if type(msg) == types.CallbackQuery:
+            if isinstance(msg, types.CallbackQuery):
                 chat_id = msg.message.chat.id
-            elif type(msg) == types.Message:
+            elif isinstance(msg, types.Message):
                 chat_id = msg.chat.id
             await bot.send_message(
                 chat_id, _("Возникла ошибка, сообщи @nyudenkov, пожалуйста")
