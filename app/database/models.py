@@ -25,7 +25,7 @@ class User(mixins.ModelMixin):
     links: fields.ReverseRelation["Link"]
 
     @classmethod
-    async def get_from_message(cls, message: types.Message) -> t.Tuple["User", bool]:
+    async def get_from_message(cls, message: types.Message) -> tuple["User", bool]:
         return await cls.get_or_create(tg_id=message.from_user.id)
 
     async def set_language(self, lang: str) -> None:
@@ -44,7 +44,7 @@ class Link(mixins.ModelMixin):
 
     @classmethod
     async def get_random_by_owner(cls, owner: User) -> t.Optional["Link"]:
-        link_ids: t.List[int] = await Link.filter(
+        link_ids: list[int] = await Link.filter(
             owner=owner, was_read=False
         ).values_list("id", flat=True)
         if link_ids:

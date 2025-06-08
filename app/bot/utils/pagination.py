@@ -1,4 +1,3 @@
-import typing as t
 from math import ceil
 
 from aiogram import types
@@ -25,9 +24,7 @@ class QuerySetPaginationKeyboard(InlineKeyboardMarkup):
         inline_keyboard=None,
         **kwargs,
     ):
-        super(QuerySetPaginationKeyboard, self).__init__(
-            row_width=2, inline_keyboard=inline_keyboard, **kwargs
-        )
+        super().__init__(row_width=2, inline_keyboard=inline_keyboard, **kwargs)
         self.qs = qs
         self.page = page
         self.count = count
@@ -37,7 +34,7 @@ class QuerySetPaginationKeyboard(InlineKeyboardMarkup):
     async def max_page(self) -> int:
         return ceil(await self.qs.count() / self.count)
 
-    async def get_keyboard(self) -> t.Tuple["QuerySetPaginationKeyboard", t.List]:
+    async def get_keyboard(self) -> tuple["QuerySetPaginationKeyboard", list]:
         self.data = await self.qs.offset(
             0 if self.page == 1 else (self.count * (self.page - 1))
         ).limit(self.count)

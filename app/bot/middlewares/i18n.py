@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Any, Optional, Tuple
+from typing import Any, Optional
 
 from aiogram import types
 from aiogram.contrib.middlewares.i18n import I18nMiddleware as BaseI18nMiddleware
@@ -24,7 +24,7 @@ class I18nMiddleware(BaseI18nMiddleware):
         "ru": LanguageData("🇷🇺", "Русский"),
     }
 
-    async def get_user_locale(self, action: str, args: Tuple[Any]) -> str:
+    async def get_user_locale(self, action: str, args: tuple[Any]) -> str:
         if isinstance(args[0], (types.Message, types.CallbackQuery)):
             user, _ = await User.get_or_create(tg_id=args[0].from_user.id)
             if user.language_iso:
