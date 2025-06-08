@@ -3,14 +3,14 @@
 ## Before Completing Any Task
 
 ### 1. Code Quality Checks
-- **MANDATORY**: Run `make lint` (runs both black and isort)
-  - This ensures code formatting consistency
-  - Both black and isort must pass without errors
+- **MANDATORY**: Run `make lint` (runs ruff check and format)
+  - This ensures code formatting consistency and linting compliance
+  - Ruff must pass without errors
 
 ### 2. Database Changes
 - If models were modified:
-  - Generate migrations: `aerich migrate`
-  - Apply migrations: `aerich upgrade`
+  - Generate migrations: `uv run aerich migrate`
+  - Apply migrations: `uv run aerich upgrade`
   - Test migration rollback if possible
 
 ### 3. Internationalization
@@ -26,12 +26,14 @@
 - Verify no runtime errors in logs
 
 ### 5. Dependencies
-- If new packages were used, ensure they're added via `poetry add`
-- Check that `poetry.lock` is updated
+- If new packages were used, ensure they're added via `uv add`
+- Check that `uv.lock` is updated
+- Run `uv sync` to ensure environment is consistent
 
 ## Critical Notes
 - No automated tests are present in the codebase
 - Manual testing via Telegram is required
 - Always run locale compilation before testing
 - Database migrations must be applied before running
-- Code must pass both black and isort formatting
+- Code must pass ruff linting and formatting
+- All Python commands should use `uv run` prefix

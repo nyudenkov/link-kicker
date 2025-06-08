@@ -1,9 +1,9 @@
 # Code Style and Conventions
 
 ## Code Formatting
-- **Black**: Code formatter with default settings
-- **isort**: Import sorting and organization
+- **Ruff**: Primary linter and formatter (replaced black + isort)
 - **Target Python Version**: 3.9+
+- All formatting and linting handled by ruff with project-specific configuration
 
 ## Code Style Patterns
 - Uses async/await extensively for database and API operations
@@ -22,6 +22,7 @@
 - Third-party imports second
 - Local application imports last
 - Relative imports used within app modules
+- Import sorting handled automatically by ruff
 
 ## Database Patterns
 - Uses Tortoise ORM with async patterns
@@ -34,6 +35,11 @@
 - Use aiogram types for message handling
 - Internationalization via `_()` function calls
 - Inline keyboards for interactive elements
+
+## Development Workflow
+- All Python commands prefixed with `uv run`
+- Dependencies managed via uv (not pip or poetry)
+- Code quality enforced via `make lint` (ruff)
 
 ## No Docstrings
 - The codebase does not use docstrings consistently
